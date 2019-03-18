@@ -21,9 +21,9 @@
                             </div>
                             <div class="form-group">
                                 @foreach($permissions as $permission)
-                                    <input type="checkbox" name="permission[]"
+                                    <input type="checkbox" name="permission[] " id="permission-{{$permission->id}}"
                                            value="{{$permission->id}}" {{$role->permissions->contains($permission->id)? 'checked="checked"':''}}>
-                                    <label>{{$permission->name}}</label><br>
+                                    <label for="permission-{{$permission->id}}">{{$permission->name}}</label><br>
                                 @endforeach
                             </div>
                             <div class="form-group">

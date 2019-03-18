@@ -22,8 +22,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Country ID</th>
-                                <th>Created at</th>
                                 <th>Action</th>
 
                             </tr>
@@ -49,8 +47,6 @@
                 columns: [
                     { data: 'id', name: 'ID' },
                     { data: 'name', name: 'Title' },
-                    {data: 'country_id', name: 'Country ID'},
-                    {data: 'created_at', name: 'created At'},
                     {data: 'action', name: 'Action', orderable: false, searchable: false}
                 ]
             });

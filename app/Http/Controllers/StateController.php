@@ -18,11 +18,16 @@ class StateController extends Controller
     {
         return Datatables::of(State::query())->addColumn('action', function ($state) {
             return '
-                <div class="btn-group btn-octonary">
-                    <a type="button" href="'.route('states.show',[$state->id]).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="'.route('states.edit',[$state->id]).'"><i class="fa fa-edit"></i></a>
-                    <a href="'.route('states.destroy', [$state->id]).'" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+               
+             <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('states.show',[$state->id]).'" >View</a></li>
+                    <li><a href="'.route('states.edit',[$state->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="'.route('states.destroy', [$state->id]).'">Delete</a></li>
+                </ul>
+             </div>
             ';
         })
             ->make(true);

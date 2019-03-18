@@ -19,11 +19,15 @@ class CountryController extends Controller
     {
         return Datatables::of(Country::query())->addColumn('action', function ($country) {
             return '
-                <div class="btn-group btn-octonary">
-                    <a type="button" href="' . route('countries.show', [$country->id]) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="' . route('countries.edit', [$country->id]) . '"><i class="fa fa-edit"></i></a>
-                    <a href="' . route('countries.destroy', [$country->id]) . '" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+                <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('countries.show',[$country->id]).'" >View</a></li>
+                    <li><a href="'.route('countries.edit',[$country->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="'.route('countries.destroy', [$country->id]).'">Delete</a></li>
+                </ul>
+             </div>
             ';
         })
             ->make(true);

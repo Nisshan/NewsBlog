@@ -22,6 +22,7 @@
     <!-- Summernote-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 
+    <script src="http://demo.expertphp.in/js/jquery.js"></script>
 
 
 @if(config('adminlte.plugins.select2'))
@@ -64,11 +65,20 @@
 
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 renderer -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <script src="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 @endif
 
 @if(config('adminlte.plugins.chartjs'))
     <!-- ChartJS -->
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 @endif
@@ -84,7 +94,7 @@
         $('.dropdown-toggle').dropdown()
         $(".myselect").select2();
         $(".myselect1").select2();
-        $('#lfm').filemanager('image');
+        //$('#lfm').filemanager('image');
     });
 
 </script>

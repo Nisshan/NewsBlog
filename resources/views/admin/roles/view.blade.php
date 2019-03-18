@@ -1,5 +1,8 @@
 @extends('adminlte::page')
 @section('title', 'View Role')
+@section('css')
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@stop
 
 @section('content_header')
     <h1>
@@ -31,18 +34,21 @@
                             <td>{{$roles->created_at->toFormattedDateString()}}</td>
                         </tr>
 
-                        @foreach ($roles->permissions as $permission)
-                            <tr>
 
-
-                                    <td>Permission</td>
-                                    <td> {{$permission->name}}</td>
-
-                            </tr>
-                        @endforeach
 
 
                     </table>
+
+                    <div><p>{{__('Permission Assigned : ')}}</p>
+                    @foreach ($roles->permissions as $permission)
+
+                            <p><span class="w3-tag w3-blue" >{{$permission->name}}</span></p>
+                            {{--<td>Permission</td>--}}
+                            {{--<td> {{$permission->name}}</td>--}}
+                    @endforeach
+                    </div>
+
+
                 </div>
             </div>
         </div>

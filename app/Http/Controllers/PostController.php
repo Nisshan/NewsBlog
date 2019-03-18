@@ -7,6 +7,7 @@ use App\Country;
 use App\District;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
@@ -20,11 +21,15 @@ class PostController extends Controller
     {
         return Datatables::of(Post::query())->addColumn('action', function ($post) {
             return '
-                <div class="btn-group  btn-octonary">
-                    <a type="button" href="'.route('posts.show',[$post->id]).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="'.route('posts.edit',[$post->id]).'"><i class="fa fa-edit"></i></a>
-                    <a href="'.route('posts.destroy', [$post->id]).'" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+                
+             <div class="btn-group">
+                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('posts.show',[$post->id]).'" >View</a></li>
+                    <li><a type="button" href="'.route('posts.edit',[$post->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a type="button" href="'.route('posts.destroy', [$post->id]).'">Delete</a></li>
+                </ul>
             ';
         })
             ->make(true);
@@ -45,7 +50,9 @@ class PostController extends Controller
     {
         if(auth()->user()->hasPermissionTo('create post')) {
             $data['districts'] = District::all();
-            $data['categories'] = Category::all();
+            $data['states'] =  DB::table("states")->pluck("name","id");
+            $data['categories'] = DB::table("categories")->pluck("name","id");
+            $data['countries'] = DB::table("countries")->pluck("name","id");
             return view('admin.posts.create')->with($data);
         }
         else{

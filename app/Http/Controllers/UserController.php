@@ -20,10 +20,12 @@ class UserController extends Controller
         return Datatables::of(User::query())->addColumn('action', function ($user) {
             return '
 
-                <div class="btn-group btn-octonary">
-                    <a type="button" href="' . route('users.show', [$user->id]) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="' . route('users.edit', [$user->id]) . '"><i class="fa fa-edit"></i></a>
-                   
+                 <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li>  <a type="button" href="' . route('users.show', [$user->id]) . '" >View</a></li>
+                    <li><a  type="button" href="' . route('users.edit', [$user->id]) . '">Edit</a></li>
+                   </ul>
                 </div>
             ';
 
@@ -46,7 +48,6 @@ class UserController extends Controller
     {
         if (auth()->user()->hasPermissionTo('create user')) {
             $data['user'] = User::all();
-            flash(__('User Created Successfully'))->success();
             return view('admin.users.create')->with($data);
         } else {
             flash(__('You are Not Permitted to Create User'))->error();
@@ -74,7 +75,8 @@ class UserController extends Controller
             return redirect()->action('UserController@create');
         }
         $user->save();
-        return redirect()->action('UserController@create');
+        flash(__('User Created Successfully'))->success();
+        return redirect()->action('UserController@index');
 
     }
 
@@ -91,7 +93,7 @@ class UserController extends Controller
             return view('admin.users.view')->with($data);
         } else {
             flash(__('You are Not Permitted to Create User'))->error();
-            return redirect()->action("UserController");
+            return redirect()->action("UserController@index");
 
         }
     }
@@ -110,7 +112,7 @@ class UserController extends Controller
             return view('admin.users.edit')->with($data);
         } else {
             flash(__('You are Not Permitted to Create User'))->error();
-            return redirect()->action("UserController");
+            return redirect()->action("UserController@index");
 
         }
     }

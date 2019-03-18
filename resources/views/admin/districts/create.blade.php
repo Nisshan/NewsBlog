@@ -8,8 +8,7 @@
 @section('content')
     @include('flash::message')
     <div class="container">
-        <link rel="stylesheet" href="http://www.expertphp.in/css/bootstrap.css">
-        <script src="http://demo.expertphp.in/js/jquery.js"></script>
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -20,20 +19,20 @@
 
                             <div class="form-group">
                                 <label for="country">Select Country</label><br>
-                                <select id="country" name="country_id" class="form-control" style="width:350px">
-                                    <option value="{{ old('country_id') }}" selected disabled>Select</option>
+                                <select id="country" name="country_id" class="form-control" style="width:350px" >
+                                    <option>Select</option>
                                     @foreach($countries as $key => $country)
                                         <option value="{{$key}}"> {{$country}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" id="stateDiv" style="display: none">
                                 <label for="state">Select State</label><br>
-                                <select name="state" id="state" class="form-control myselect" style="width:350px">
+                                <select name="state" id="state" class="form-control" style="width:350px" >
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display: none" id="districtDiv" >
                                 <label for="title">District Name</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter district name.." id="title" name="name" value="{{ old('name') }}">
                             </div>
@@ -62,8 +61,19 @@
         </div>
     @endif
     <script type="text/javascript">
+
+        function stateFunction() {// show state on state
+
+        }
+        function countryFunction() {
+
+        }
+
         $('#country').change(function(){
+            var x = document.getElementById("stateDiv");
+            x.style.display = "block";
             var countryID = $(this).val();
+            stateFunction();
             if(countryID){
                 $.ajax({
                     type:"GET",
@@ -73,6 +83,7 @@
                             $("#state").empty();
                             $("#state").append('<option>Select</option>');
                             $.each(res,function(key,value){
+
                                 $("#state").append('<option value="'+key+'">'+value+'</option>');
                             });
 
@@ -84,6 +95,10 @@
             }else{
                 $("#state").empty();
             }
+        });
+        $('#state').change(function(){
+            var x = document.getElementById("districtDiv");
+            x.style.display = "block";
         });
     </script>
 @endsection

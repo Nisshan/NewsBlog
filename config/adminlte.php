@@ -208,7 +208,7 @@ return [
         'Roles and Permission',
         [
             'text' =>'User Management',
-            'icon' => 'list',
+            'icon' => 'user',
 
             'submenu' => [
                 [
@@ -243,14 +243,9 @@ return [
         [
             'text' =>'Permission View',
             'icon' => 'user',
-            'submenu' => [
-                [
-                    'text' => 'view',
-                    'url'  => 'admin/permissions',
+            'url'  => 'admin/permissions',
 
-                ],
 
-            ],
         ],
 
 

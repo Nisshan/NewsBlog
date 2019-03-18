@@ -16,11 +16,15 @@ class DynamicDependent extends Controller
     {
         return Datatables::of(District::query())->addColumn('action', function ($district) {
             return '
-                <div class="btn-group btn-octonary">
-                    <a type="button" href="' . route('districts.show', [$district->id]) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="' . route('districts.edit', [$district->id]) . '"><i class="fa fa-edit"></i></a>
-                    <a href="' . route('districts.destroy', [$district->id]) . '" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+                <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('districts.show',[$district->id]).'" >View</a></li>
+                    <li><a href="'.route('districts.edit',[$district->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="'.route('districts.destroy', [$district->id]).'">Delete</a></li>
+                </ul>
+             </div>
             ';
         })
             ->make(true);

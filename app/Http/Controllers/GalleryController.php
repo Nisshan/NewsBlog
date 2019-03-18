@@ -15,19 +15,23 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getGallery()
-    {
-        return Datatables::of(Gallery::query())->addColumn('action', function ($gallery) {
-            return '
-                <div class="btn-group  btn-octonary">
-                    <a type="button" href="'.route('galleries.show',[$gallery->id]).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="'.route('galleries.edit',[$gallery->id]).'"><i class="fa fa-edit"></i></a>
-                    <a href="'.route('galleries.destroy', [$gallery->id]).'" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+   public function getGallery()
+   {
+       return Datatables::of(Gallery::query())->addColumn('action', function ($gallery) {
+           return '
+                <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('galleries.show',[$gallery->id]).'" >View</a></li>
+                    <li><a href="'.route('galleries.edit',[$gallery->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="'.route('galleries.destroy', [$gallery->id]).'">Delete</a></li>
+                </ul>
+             </div>
             ';
-        })
-            ->make(true);
-    }
+       })
+           ->make(true);
+   }
     public function index()
     {
         $data['galleries']=Gallery::all();

@@ -1,5 +1,9 @@
 @extends('adminlte::page')
 @section('title', 'View Role')
+@section('css')
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@stop
+
 
 @section('content_header')
     <h1>
@@ -34,13 +38,17 @@
                             <td>{{__('Created at')}}</td>
                             <td>{{$user->created_at->toFormattedDateString()}}</td>
                         </tr>
-                        @foreach($user->roles as $role)
-                        <tr>
-                            <td>{{__('Assigned Role')}}</td>
-                            <td>{{$role->name}}</td>
-                        </tr>
-                        @endforeach
                     </table>
+
+                    <div><p>{{__('Roles Assigned : ')}}</p>
+                    @foreach($user->roles as $role)
+
+                            {{--<td>{{__('Assigned Role')}}</td>--}}
+                            <p><span class="w3-tag w3-blue">{{$role->name}}</span></p>
+                            {{--<td>{{$role->name}}</td>--}}
+
+                    @endforeach
+                    </div>
                 </div>
             </div>
         </div>

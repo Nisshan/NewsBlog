@@ -25,11 +25,11 @@
                             </div>
                             <div class="form-group">
                                 @foreach($roles as $role)
-                                    <input type="checkbox" name="role[]"
+                                    <input type="checkbox" name="role[]" id="role-{{$role->id}}"
                                            value="{{$role->id}}"}} {{ $user->roles->contains($role->id) ? 'checked="checked"':'' }}>
-                                    <label>{{$role->name}}</label><br>
+                                    <label for="role-{{$role->id}}">{{$role->name}}</label><br>
                                 @endforeach
-                            </div>
+                            </div> 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">{{__('Submit!')}}</button>
                             </div>

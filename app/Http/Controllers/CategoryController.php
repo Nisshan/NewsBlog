@@ -21,11 +21,15 @@ class CategoryController extends Controller
         return Datatables::of(Category::query())->addColumn('action', function ($category) {
             return '
 
-                <div class="btn-group btn-octonary">
-                    <a type="button" href="' . route('categories.show', [$category->id]) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-success" href="' . route('categories.edit', [$category->id]) . '"><i class="fa fa-edit"></i></a>
-                    <a href="' . route('categories.destroy', [$category->id]) . '" class="delete btn btn-danger"><i class="fa fa-remove"></i></a>
-                </div>
+               <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a type="button" href="'.route('categories.show',[$category->id]).'" >View</a></li>
+                    <li><a href="'.route('categories.edit',[$category->id]).'">Edit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="'.route('categories.destroy', [$category->id]).'">Delete</a></li>
+                </ul>
+             </div>
             ';
 
         })

@@ -19,7 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+// admin routes
 Route::group(['prefix'=> 'admin', 'middleware' => 'auth' ], function(){
 
     Route::resource('countries','CountryController');
@@ -33,15 +33,21 @@ Route::group(['prefix'=> 'admin', 'middleware' => 'auth' ], function(){
     Route::resource('users','UserController',['except'=> ['destroy']]);
 
 });
-
-Route::get('dropdownlist','DynamicDependent@index');
-Route::get('get-state-list','DynamicDependent@getStateList');
-
-
-
-// Get Data
+//ajax controller
+//Route::get('dropdownlist','DynamicDependent@index');
+//Route::get('get-state-list','DynamicDependent@getStateList');
+Route::get('get-state-list','DistrictController@getStateList');
+Route::get('getDistrictList','HomeController@getDistrictList');
 
 
+// front end routes
+Route::get('getStateList','HomeController@getStateList');
+Route::get('/single-news/{id}', 'newsController@singleNewsInfo');
+Route::get('/category-news/{id}', 'newsController@categoryNewsInfo');
+Route::get('/state-news/{id}', 'newsController@StateNews');
+Route::get('/district-news/{id}', 'newsController@DistrictNews');
+
+// Data tables
 Route::group(['middleware' => 'auth','prefix' => 'dataset'], function () {
     // User needs to be authenticated to enter here.
     Route::get('getCategory', 'CategoryController@getCategory');

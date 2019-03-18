@@ -21,6 +21,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
+                                <th>Cover</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -44,6 +45,7 @@
             columns: [
                 { data: 'id', name: 'ID' },
                 { data: 'title', name: 'Title' },
+                {data: 'image', name:'Cover'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
