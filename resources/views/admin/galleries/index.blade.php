@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Countries')
+@section('title', 'Galleries')
 
 @section('content_header')
 
@@ -19,11 +19,12 @@
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Cover</th>
-                                <th>Action</th>
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Name')}}</th>
+                                <th>{{__('lang.cover')}}</th>
+                                <th>{{__('lang.Action')}}</th>
                             </tr>
+
                             </thead>
                             <tbody>
                             
@@ -68,10 +69,11 @@
                     $.ajax({
                         url: url,
                         type: 'DELETE',
-                        dataType: false,
+                        dataType: 'json',
                         data: {'_method': 'DELETE', 'submit': true}
                     }).always(function (data) {
-                        window.location.reload();
+                        // window.location.reload();
+                        window.console.log();
                     });
                 }else
                     alert("You have cancelled!");

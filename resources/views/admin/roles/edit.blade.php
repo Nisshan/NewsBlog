@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('title', 'Edit '. $role->name )
 
 @section('content')
     @include('flash::message')
@@ -7,14 +8,14 @@
             <div class="col-md-10">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title">{{__('Edit Roles')}}</h1>
+                        <h1 class="box-title">{{__('lang.Edit_Roles')}}</h1>
                     </div>
                     <div class="box-header with-border">
                         <form action="{{ route('roles.update',[$role->id])}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
-                                <label for="title">{{__('edit Role Name')}}</label>
+                                <label for="title">{{__('lang.Edit_Role_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
                                        placeholder="Enter Role.."
                                        id="role" name="name" value="{{$role->name}}">
@@ -27,7 +28,7 @@
                                 @endforeach
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">{{__('Submit!')}}</button>
+                                <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                             </div>
 
 

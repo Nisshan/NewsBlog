@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Edit ' . $post->title)
 @section('js')
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
@@ -27,29 +27,29 @@
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
-                                <label for="name">Title*</label>
+                                <label for="name">{{__('lang.Title')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter name of Title..."
                                        name="title"
                                        id="title" value="{{$post->title}}">
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description">{{$post->description}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('Meta Description')}}</label>
+                                <label for="title">{{__('lang.Meta_Description')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter meta_description"
                                        id="metades" name="meta_description"
                                        value="{{ $post->meta_description  }}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('keywords')}}</label>
+                                <label for="title">{{__('lang.keywords')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter keywords"
                                        id="keywords" name="keywords" value="{{ $post->keywords}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('Slug')}}</label>
+                                <label for="title">{{__('lang.Slug')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                        id="slug" name="slug" readonly="readonly" value="{{ $post->slug}}">
                             </div>
@@ -57,18 +57,21 @@
 
                             <div class="form-group">
                                 <div class="radio">
-                                    <label><b>Status</b> <br><input type="radio" name="status" checked value="true">active</label>
+                                    <label><b>{{__('lang.Status')}}</b> <br><input type="radio" name="status"  value="0" {{ $post->status == '0' ? 'checked' : '' }}>{{__('lang.Breaking')}}</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="status" value="false">inactive</label>
+                                    <label><input type="radio" name="status" value="1" {{ $post->status == '1' ? 'checked' : '' }}>{{__('lang.Active')}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label ><input type="radio" name="status"  value ='2' {{ $post->status == '2' ? 'checked' : '' }}>{{__('lang.Inactive')}}</label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="lfm">Select images</label>
+                                <label for="lfm">{{__('lang.Select_images')}}</label>
                                 <div class="input-group">
                                 <span class="input-group-btn">
                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                       <i class="fa fa-picture-o"></i> Choose Images
+                                       <i class="fa fa-picture-o"></i> {{__('lang.Choose_Images')}}
                                     </a>
                                 </span>
                                     <input id="thumbnail" readonly="readonly" class="form-control" type="text"
@@ -82,14 +85,14 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="lfm1">Select Cover</label>
+                                    <label for="lfm1">{{__('lang.Select_Cover')}}</label>
                                     <div class="input-group">
                                 <span class="input-group-btn">
                                     <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-primary">
-                                       <i class="fa fa-picture-o"></i> Choose Cover Image
+                                       <i class="fa fa-picture-o"></i>{{__('lang.Choose_Cover_Image')}}
                                     </a>
                                 </span>
-                                        <input id="thumbnail1" class="form-control" type="text" name="cover" value="{{$post->cover}}">
+                                        <input id="thumbnail1" class="form-control" type="text" name="cover" value="{{$post->cover}}" readonly="readonly">
                                     </div>
                                     <div id="holder1">
                                         @if ((strlen($post->cover)>5))
@@ -100,7 +103,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Submit!</button>
+                                        <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                                     </div>
                                 </div>
                             </div>

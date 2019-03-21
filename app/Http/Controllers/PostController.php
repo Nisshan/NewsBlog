@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Country;
+use App\PostImage;
 use App\District;
 use App\Post;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class PostController extends Controller
                     <li><a type="button" href="'.route('posts.show',[$post->id]).'" >View</a></li>
                     <li><a type="button" href="'.route('posts.edit',[$post->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a type="button" href="'.route('posts.destroy', [$post->id]).'">Delete</a></li>
+                    <li  ><a class="delete" type="button" href="'.route('posts.destroy', [$post->id]).'">Delete</a></li>
                 </ul>
             ';
         })
@@ -86,7 +87,8 @@ class PostController extends Controller
         foreach ($image as $i) {
             $imageList[] = parse_url($i)['path'];
         }
-        $images = implode(',',$imageList);
+
+//        $images = implode(',',$imageList);
         $covers = explode(',', $request->cover);
         $coverlist = [];
         foreach ($covers as $c) {
@@ -100,7 +102,7 @@ class PostController extends Controller
         ]);
         $post = new Post;
         $post->cover = parse_url($c)['path'];
-        $post->image = $images;
+        $post->image =  parse_url($i)['path'];
         $post->title = trim($request->title);
         $post->description = trim($request->description);
         $post->slug =str_slug($post['title'], '-');
@@ -112,7 +114,7 @@ class PostController extends Controller
         } while ($validatedSlug);
         $post->keywords = implode(',', $this->extractKeyWords($post['description']));
         $post->meta_description = str_limit(trim($post['description']), 200);
-        $post->district_id=implode(',',$request->district_id);
+        $post->district_id=$request->title;
         $post->user_id = auth()->id();
         $post->save();
 
@@ -120,16 +122,18 @@ class PostController extends Controller
         $post->category()->attach($category);
 
         $imageModel = [];
+
         foreach ($imageList as $image) {
             $imageModel[] = [
                 "post_id" => $post->id,
                 "image" => $image
             ];
         }
-        $post->image()->createMany($imageModel);
+        $post->images()->createMany($imageModel);
+
 
         flash('Post Created Successfully')->success();
-        return redirect()->action('PostController@create');
+        return redirect()->action('PostController@index');
     }
 
     /**
@@ -207,15 +211,17 @@ class PostController extends Controller
 
         }
         $post= Post::find($id);
-        foreach ($post->image as $image){
+        foreach ($post->images as $image){
             $image->delete();
         }
         $post->cover = parse_url($c)['path'];
         $post->image = $images;
         $post->title = trim($request->title);
         $post->description = trim($request->description);
-        $post->slug =$request->slug;
-        $post->keywords = implode(',', $this->extractKeyWords($post['description']));
+//        $post->slug =$request->slug;
+        $post->status = $request->status;
+        $post->keywords = $request->keywords;
+//            implode(',', $this->extractKeyWords($post['description']));
         $post->meta_description = str_limit(trim($post['description']), 200);
         $post->save();
 
@@ -229,7 +235,7 @@ class PostController extends Controller
                 "image" => $image
             ];
         }
-        $post->image()->createMany($imageModel);
+        $post->images()->createMany($imageModel);
 
         flash('Post Created Successfully')->success();
         return redirect()->action('PostController@index');

@@ -4,148 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03af72db06185ff6d39302aff675967b",
+    "content-hash": "ae566f17395239f4c45e443f70ed8b41",
     "packages": [
-        {
-            "name": "amranidev/ajaxis",
-            "version": "v3.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amranidev/ajaxis.git",
-                "reference": "5dd95b708c81f9272fca6f974fa823bc6a979107"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amranidev/ajaxis/zipball/5dd95b708c81f9272fca6f974fa823bc6a979107",
-                "reference": "5dd95b708c81f9272fca6f974fa823bc6a979107",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~4.0|~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Amranidev\\Ajaxis\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Amrani Houssain",
-                    "email": "amranidev@gmail.com"
-                }
-            ],
-            "description": "To manage your crud in laravel 5.1",
-            "homepage": "http://github.com/amranidev/ajaxis",
-            "keywords": [
-                "Ajaxis",
-                "Amrani Houssain",
-                "Laravel ajax get",
-                "ajax",
-                "amranidev",
-                "amrnaihoussain",
-                "files",
-                "framework",
-                "laravel",
-                "laravel ajax modal",
-                "laravel ajax post",
-                "laravel ajax reqeust",
-                "laravel ajax token",
-                "laravel bootstrap",
-                "laravel materialize",
-                "laravel modals"
-            ],
-            "time": "2016-08-27T13:05:06+00:00"
-        },
-        {
-            "name": "amranidev/scaffold-interface",
-            "version": "v1.7.24",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amranidev/scaffold-interface.git",
-                "reference": "a7fab0d69166e713250c5aa246b9173dae665eb8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amranidev/scaffold-interface/zipball/a7fab0d69166e713250c5aa246b9173dae665eb8",
-                "reference": "a7fab0d69166e713250c5aa246b9173dae665eb8",
-                "shasum": ""
-            },
-            "require": {
-                "amranidev/ajaxis": "3.0.*",
-                "gajus/dindent": "2.0.*",
-                "php": ">=7.0",
-                "pusher/pusher-http-laravel": "^4.0.0",
-                "spatie/laravel-permission": "^2.7"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.5.0",
-                "phpunit/phpunit": "~4.0|~5.0|~6.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.8.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Amranidev\\ScaffoldInterface\\ScaffoldInterfaceServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Amranidev\\ScaffoldInterface\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Amrani Houssain",
-                    "email": "amranidev@gmail.com"
-                }
-            ],
-            "description": "A Smart CRUD Generator For Laravel",
-            "homepage": "http://github.com/amranidev/scaffold-interface",
-            "keywords": [
-                "Amrani Houssain",
-                "Laravel 5.1",
-                "Laravel 5.2",
-                "amranidev",
-                "amrnaihoussain",
-                "crud",
-                "crud generator",
-                "crud generators",
-                "files",
-                "framework",
-                "laravel",
-                "laravel bootstrap",
-                "laravel materialize",
-                "scaffod",
-                "scaffold",
-                "scaffolding",
-                "scaffoldinterface",
-                "smart crud generator",
-                "smart generator"
-            ],
-            "time": "2017-11-05T16:40:30+00:00"
-        },
         {
             "name": "defuse/php-encryption",
             "version": "v2.2.1",
@@ -471,16 +331,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1"
+                "reference": "d60bcdc46978357759ecb13cb4b078da783f8faf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
-                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/d60bcdc46978357759ecb13cb4b078da783f8faf",
+                "reference": "d60bcdc46978357759ecb13cb4b078da783f8faf",
                 "shasum": ""
             },
             "require": {
@@ -513,7 +373,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2018-03-08T01:11:30+00:00"
+            "time": "2019-03-17T17:19:46+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -614,111 +474,6 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
-        },
-        {
-            "name": "gajus/dindent",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gajus/dindent.git",
-                "reference": "d81c3a6f78fbe1ab26f5e753098bbbef6b6a9f3c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gajus/dindent/zipball/d81c3a6f78fbe1ab26f5e753098bbbef6b6a9f3c",
-                "reference": "d81c3a6f78fbe1ab26f5e753098bbbef6b6a9f3c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Gajus\\Dindent\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Gajus Kuizinas",
-                    "email": "gk@anuary.com"
-                }
-            ],
-            "description": "HTML indentation library for development and testing.",
-            "homepage": "https://github.com/gajus/dindent",
-            "keywords": [
-                "format",
-                "html",
-                "indent"
-            ],
-            "time": "2014-10-08T10:03:04+00:00"
-        },
-        {
-            "name": "graham-campbell/manager",
-            "version": "v4.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "ba3e236392665425723b2b967196aeeabc7f929f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/ba3e236392665425723b2b967196aeeabc7f929f",
-                "reference": "ba3e236392665425723b2b967196aeeabc7f929f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.5.*|5.6.*|5.7.*|5.8.*",
-                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
-                "php": "^7.1.3"
-            },
-            "require-dev": {
-                "graham-campbell/analyzer": "^2.1",
-                "graham-campbell/testbench-core": "^3.0",
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^6.5|^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\Manager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "Manager Provides Some Manager Functionality For Laravel 5",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel Manager",
-                "Laravel-Manager",
-                "connector",
-                "framework",
-                "interface",
-                "laravel",
-                "manager"
-            ],
-            "time": "2019-02-16T14:23:38+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1373,16 +1128,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v7.2.1",
+            "version": "v7.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "bd8ae09775778f96b6642d87e2f579fea5bf92b5"
+                "reference": "c0c3fca80d8f5af90dcbf65e62bdd1abee9ac25d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/bd8ae09775778f96b6642d87e2f579fea5bf92b5",
-                "reference": "bd8ae09775778f96b6642d87e2f579fea5bf92b5",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/c0c3fca80d8f5af90dcbf65e62bdd1abee9ac25d",
+                "reference": "c0c3fca80d8f5af90dcbf65e62bdd1abee9ac25d",
                 "shasum": ""
             },
             "require": {
@@ -1401,7 +1156,7 @@
                 "php": ">=7.1",
                 "phpseclib/phpseclib": "^2.0",
                 "symfony/psr-http-message-bridge": "~1.0",
-                "zendframework/zend-diactoros": "~1.0"
+                "zendframework/zend-diactoros": "~1.0|~2.0"
             },
             "require-dev": {
                 "mockery/mockery": "~1.0",
@@ -1439,7 +1194,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2019-03-12T11:42:07+00:00"
+            "time": "2019-03-13T14:21:06+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -2036,16 +1791,16 @@
         },
         {
             "name": "nexmo/client",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nexmo/nexmo-php.git",
-                "reference": "2f79f67f24225ea627ee14578e98c96276cdd4c5"
+                "reference": "29f6856b4d918f3565bf56c26bc01dd664988b24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/2f79f67f24225ea627ee14578e98c96276cdd4c5",
-                "reference": "2f79f67f24225ea627ee14578e98c96276cdd4c5",
+                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/29f6856b4d918f3565bf56c26bc01dd664988b24",
+                "reference": "29f6856b4d918f3565bf56c26bc01dd664988b24",
                 "shasum": ""
             },
             "require": {
@@ -2080,7 +1835,7 @@
                 }
             ],
             "description": "PHP Client for using Nexmo's API.",
-            "time": "2019-02-07T11:14:34+00:00"
+            "time": "2019-03-15T11:47:11+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2238,88 +1993,6 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
-        },
-        {
-            "name": "paragonie/sodium_compat",
-            "version": "v1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/f261f50c84d20b1364723dbd21e668f4e40b2140",
-                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140",
-                "shasum": ""
-            },
-            "require": {
-                "paragonie/random_compat": ">=1",
-                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^3|^4|^5"
-            },
-            "suggest": {
-                "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
-                "ext-sodium": "PHP >= 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "ISC"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com"
-                },
-                {
-                    "name": "Frank Denis",
-                    "email": "jedisct1@pureftpd.org"
-                }
-            ],
-            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
-            "keywords": [
-                "Authentication",
-                "BLAKE2b",
-                "ChaCha20",
-                "ChaCha20-Poly1305",
-                "Chapoly",
-                "Curve25519",
-                "Ed25519",
-                "EdDSA",
-                "Edwards-curve Digital Signature Algorithm",
-                "Elliptic Curve Diffie-Hellman",
-                "Poly1305",
-                "Pure-PHP cryptography",
-                "RFC 7748",
-                "RFC 8032",
-                "Salpoly",
-                "Salsa20",
-                "X25519",
-                "XChaCha20-Poly1305",
-                "XSalsa20-Poly1305",
-                "Xchacha20",
-                "Xsalsa20",
-                "aead",
-                "cryptography",
-                "ecdh",
-                "elliptic curve",
-                "elliptic curve cryptography",
-                "encryption",
-                "libsodium",
-                "php",
-                "public-key cryptography",
-                "secret-key cryptography",
-                "side-channel resistant"
-            ],
-            "time": "2019-03-06T17:16:38+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -2846,133 +2519,6 @@
                 "shell"
             ],
             "time": "2018-10-13T15:16:03+00:00"
-        },
-        {
-            "name": "pusher/pusher-http-laravel",
-            "version": "v4.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pusher/pusher-http-laravel.git",
-                "reference": "0f56b8de457585e82c72fcac52c4dc92b45f7054"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-laravel/zipball/0f56b8de457585e82c72fcac52c4dc92b45f7054",
-                "reference": "0f56b8de457585e82c72fcac52c4dc92b45f7054",
-                "shasum": ""
-            },
-            "require": {
-                "graham-campbell/manager": "^3.0|^4.0",
-                "illuminate/contracts": "5.5.*|5.6.*|5.7.*",
-                "illuminate/support": "5.5.*|5.6.*|5.7.*",
-                "php": "^7.0",
-                "pusher/pusher-php-server": "^3.0"
-            },
-            "require-dev": {
-                "graham-campbell/analyzer": "^1.1",
-                "graham-campbell/testbench": "^4.0|^5.0",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "3.5.*|3.6.*|3.7.*",
-                "phpunit/phpunit": "^6.5|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Pusher\\Laravel\\PusherServiceProvider"
-                    ],
-                    "aliases": {
-                        "Pusher": "Pusher\\Laravel\\Facades\\Pusher"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Pusher\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Klaiber",
-                    "email": "hello@vinkla.com",
-                    "homepage": "https://vinkla.com"
-                }
-            ],
-            "description": "A Pusher bridge for Laravel",
-            "keywords": [
-                "api",
-                "events",
-                "http",
-                "laravel",
-                "php-pusher-server",
-                "publish",
-                "pusher",
-                "realtime",
-                "rest",
-                "trigger"
-            ],
-            "time": "2018-09-21T14:09:35+00:00"
-        },
-        {
-            "name": "pusher/pusher-php-server",
-            "version": "v3.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "2279bcd21a608a76f9be1fe0675aa2dd1efb2fa0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/2279bcd21a608a76f9be1fe0675aa2dd1efb2fa0",
-                "reference": "2279bcd21a608a76f9be1fe0675aa2dd1efb2fa0",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "paragonie/sodium_compat": "^1.6",
-                "php": "^5.4 || ^7.0",
-                "psr/log": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Pusher\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for interacting with the Pusher REST API",
-            "keywords": [
-                "events",
-                "messaging",
-                "php-pusher-server",
-                "publish",
-                "push",
-                "pusher",
-                "real time",
-                "real-time",
-                "realtime",
-                "rest",
-                "trigger"
-            ],
-            "time": "2019-01-18T12:10:21+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5693,16 +5239,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.6",
+            "version": "7.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "09c85e14994df92e5ff1f5ec0b481bdb7d3d3df9"
+                "reference": "eb343b86753d26de07ecba7868fa983104361948"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/09c85e14994df92e5ff1f5ec0b481bdb7d3d3df9",
-                "reference": "09c85e14994df92e5ff1f5ec0b481bdb7d3d3df9",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/eb343b86753d26de07ecba7868fa983104361948",
+                "reference": "eb343b86753d26de07ecba7868fa983104361948",
                 "shasum": ""
             },
             "require": {
@@ -5720,7 +5266,7 @@
                 "phpunit/php-code-coverage": "^6.0.7",
                 "phpunit/php-file-iterator": "^2.0.1",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-timer": "^2.0",
+                "phpunit/php-timer": "^2.1",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
                 "sebastian/environment": "^4.0",
@@ -5773,7 +5319,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-02-18T09:24:50+00:00"
+            "time": "2019-03-16T07:31:17+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

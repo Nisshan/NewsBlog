@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Countries')
+@section('title', 'Posts')
 
 @section('content_header')
 
@@ -19,10 +19,10 @@
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Cover</th>
-                                <th>Action</th>
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Name')}}</th>
+                                <th>{{__('lang.cover')}}</th>
+                                <th>{{__('lang.Action')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,7 +45,11 @@
             columns: [
                 { data: 'id', name: 'ID' },
                 { data: 'title', name: 'Title' },
-                {data: 'image', name:'Cover'},
+                {
+                    data: 'cover', "render": function (data) {
+                        return '<img src="' + data + '" class="img img-responsive img-circle " />';
+                    }, orderable: false, searchable: false
+                },
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
@@ -65,7 +69,8 @@
                     dataType: false,
                     data: {'_method': 'DELETE', 'submit': true}
                 }).always(function (data) {
-                    window.location.reload();
+                    // window.location.reload();
+                    window.console.log();
                 });
             }else
                 alert("You have cancelled!");

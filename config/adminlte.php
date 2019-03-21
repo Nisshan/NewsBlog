@@ -15,9 +15,9 @@ return [
 
     'title' => 'Nepal News',
 
-    'title_prefix' => 'News',
+    'title_prefix' => '',
 
-    'title_postfix' => 'Nepal',
+    'title_postfix' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -114,7 +114,7 @@ return [
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/countries',
                 ],
                 [
@@ -126,11 +126,11 @@ return [
 
         ],
         [
-            'text' =>'states',
+            'text' =>'States',
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/states',
                 ],
                 [
@@ -146,7 +146,7 @@ return [
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/districts',
                 ],
                 [
@@ -158,11 +158,11 @@ return [
 
         ],
         [
-            'text' =>'categories',
+            'text' =>'Categories',
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/categories',
                 ],
                 [
@@ -174,11 +174,11 @@ return [
 
         ],
         [
-            'text' =>'posts',
+            'text' =>'Posts',
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/posts',
                 ],
                 [
@@ -190,11 +190,11 @@ return [
 
         ],
         [
-            'text' =>'galleries',
+            'text' =>'Galleries',
             'icon' => 'list',
             'submenu' => [
                 [
-                    'text' => 'manage',
+                    'text' => 'Manage',
                     'url'  => 'admin/galleries',
                 ],
                 [
@@ -217,7 +217,7 @@ return [
 
                 ],
                 [
-                    'text' => 'create',
+                    'text' => 'Create',
                     'url'  => 'admin/users/create',
 
                 ]
@@ -234,7 +234,7 @@ return [
 
                 ],
                 [
-                    'text' => 'create',
+                    'text' => 'Create',
                     'url'  => 'admin/roles/create',
 
                 ]

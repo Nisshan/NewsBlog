@@ -140,7 +140,6 @@ class DistrictController extends Controller
         $district = District::find($id);
         $district->name = trim($request->name);
         $district->description = trim($request->description);
-        $district->slug = $request->slug;
         $district->keywords = trim($request->keywords);
         $district->meta_description = str_limit($request->meta_description, 200);
         $district->save();
@@ -191,7 +190,7 @@ class DistrictController extends Controller
             }
         } else {
             flash(__('You are not authorized to create District'))->error();
-            return view('admin.districts.index');
+            return redirect()->action('DistrictController@index');
         }
 
     }

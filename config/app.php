@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ne',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,10 +176,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        Amranidev\ScaffoldInterface\ScaffoldInterfaceServiceProvider::class,
-        Amranidev\Ajaxis\AjaxisServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-        Pusher\Laravel\PusherServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
     ],
 

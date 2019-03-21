@@ -8,6 +8,7 @@ use App\Image;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
+
 class GalleryController extends Controller
 {
     /**
@@ -25,7 +26,7 @@ class GalleryController extends Controller
                     <li><a type="button" href="'.route('galleries.show',[$gallery->id]).'" >View</a></li>
                     <li><a href="'.route('galleries.edit',[$gallery->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a href="'.route('galleries.destroy', [$gallery->id]).'">Delete</a></li>
+                    <li ><a class="delete" href="'.route('galleries.destroy', [$gallery->id]).'">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -51,7 +52,7 @@ class GalleryController extends Controller
         }
         else{
             flash(__('you are not authorized to create Gallery'));
-            return view('admin.galleries.index');
+            return redirect()->route('GalleryController@index');
         }
 
     }
@@ -82,13 +83,14 @@ class GalleryController extends Controller
         foreach ($image as $i) {
             $imageList[] = parse_url($i)['path'];
         }
-        $gallery = new Gallery;
+
         $covers = explode(',', $request->cover);
         $coverlist = [];
         foreach ($covers as  $c){
             $coverlist[] = parse_url($c)['path'];
 
         }
+        $gallery = new Gallery;
         $gallery->cover = parse_url($c)['path'];;
         $gallery->title = $request->title;
         $gallery->description = $request->description;
@@ -102,6 +104,7 @@ class GalleryController extends Controller
         $gallery->keywords = strip_tags(implode(',', $this->extractKeyWords($gallery['description'])));
         $gallery->meta_description = str_limit(trim($gallery['description']), 200);
         $gallery->user_id = auth()->id();
+
         $gallery->save();
 
         $imageModel = [];
@@ -139,7 +142,7 @@ class GalleryController extends Controller
         }
         else{
             flash(__('you are not authorized to view Gallery data'));
-            return view('admin.galleries.index');
+            return redirect()->action('GalleryController@index');
         }
 
     }
@@ -195,12 +198,10 @@ class GalleryController extends Controller
         $gallery->cover = implode(',', $coverlist);
         $gallery->title = $request->title;
         $gallery->description = $request->description;
-
-
-        $gallery->slug =$request->slug;
+//        $gallery->slug =$request->slug;
         $gallery->keywords = strip_tags($request->keywords);
         $gallery->meta_description = str_limit(trim($request->meta_description, 200));
-        $gallery->user_id = auth()->id();
+//        $gallery->user_id = auth()->id();
         $gallery->save();
 
         $imageModel = [];
@@ -253,7 +254,7 @@ class GalleryController extends Controller
     }
         else{
         flash(__('you are not authorized to create Gallery'));
-        return view('admin.galleries.index');
+            return redirect()->action("GalleryController@index");
         }
     }
 }

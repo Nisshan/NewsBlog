@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Create Countries')
 @section('js')
     <script>
         $(document).ready(function() {
@@ -16,22 +16,22 @@
             <div class="col-md-10">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title">{{__('Create Country Details')}}</h1>
+                        <h1 class="box-title" for="Create_Country">{{__('lang.Create_Country_Details')}}</h1>
                     </div>
                     <div class="box-header with-border">
                         <form action="{{ route('countries.store')}}" method="POST">
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">{{__('Country Name')}}</label>
+                                <label for="country_title">{{__('lang.Country_Name')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter country name.." id="title" name="name"  >
                             </div>
                             <div class="form-group">
-                                <label for="description">{{__('Description')}}</label>
+                                <label for="country_description">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control" name="description"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Submit!</button>
+                                <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                             </div>
                         </form>
                     </div>

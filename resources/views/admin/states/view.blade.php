@@ -1,12 +1,12 @@
 @extends('adminlte::page')
-@section('title', 'View State')
+@section('title', $state->name. ' view')
 
 @section('content_header')
     <h1>
-        {{__('State Details')}}
+        {{__('lang.State_Details')}}
     </h1>
     <ol class="breadcrumb">
-        <li class="active">{{__('State Details')}}</li>
+        <li >{{__('lang.State_Details')}}</li>
     </ol>
 @stop
 @section('content')
@@ -19,36 +19,28 @@
                 <div class="box-body">
                     <table class="table table-responsive table-striped">
                         <tr>
-                            <td>{{__('State-Name')}}</td>
+                            <td>{{__('lang.State_Name')}}</td>
                             <td>{{$state->name}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Country name')}}</td>
+                            <td>{{__('lang.Country_Name')}}</td>
                             <td>{{$state->country->name}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Description')}}</td>
+                            <td>{{__('lang.Description')}}</td>
                             <td>{{$state->description}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('slug')}}</td>
+                            <td>{{__('lang.Slug')}}</td>
                             <td>{{$state->slug}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('keywords')}}</td>
+                            <td>{{__('lang.keywords')}}</td>
                             <td>{{$state->keywords}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('user id')}}</td>
-                            <td>{{$state->user_id}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{__('meta_description')}}</td>
+                            <td>{{__('lang.Meta_Description')}}</td>
                             <td>{{$state->meta_description}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{__('Created at')}}</td>
-                            <td>{{$state->created_at->toFormattedDateString()}}</td>
                         </tr>
 
                     </table>

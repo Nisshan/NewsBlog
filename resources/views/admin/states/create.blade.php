@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Create State')
 
 @section('content')
     @include('flash::message')
@@ -9,7 +9,7 @@
             <div class="col-md-10">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title">{{__('Create State Details')}}</h1>
+                        <h1 class="box-title">{{__('lang.Create_State_Details')}}</h1>
                     </div>
                     <div class="box-header with-border">
                         <form action="{{ route('states.store')}}"
@@ -17,7 +17,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="Country">Country name</label>
+                                <label for="Country">{{__('lang.Country_Name')}}</label>
                                 <select name="country_id" id="country" class="form-control myselect">
                                     @foreach($countries as $country)
                                         <option value="{{$country->id}}">{{$country->name}}
@@ -26,18 +26,18 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">State Name</label>
+                                <label for="name">{{__('lang.State_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
                                        placeholder="Enter state name.." id="name" name="name"
                                 >
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Submit!</button>
+                                <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                             </div>
                         </form>
                     </div>

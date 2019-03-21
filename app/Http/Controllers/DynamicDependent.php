@@ -22,7 +22,7 @@ class DynamicDependent extends Controller
                     <li><a type="button" href="'.route('districts.show',[$district->id]).'" >View</a></li>
                     <li><a href="'.route('districts.edit',[$district->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a href="'.route('districts.destroy', [$district->id]).'">Delete</a></li>
+                    <li  ><a  class="delete" href="'.route('districts.destroy', [$district->id]).'">Delete</a></li>
                 </ul>
              </div>
             ';

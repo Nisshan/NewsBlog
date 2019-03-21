@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Categories')
+@section('title', 'Categories List')
 
 @section('content_header')
 
@@ -13,16 +13,16 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Categories</h1>
+                    <h1 class="box-title">{{__('lang.Categories')}}</h1>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Action</th>
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Title')}}</th>
+                                <th>{{__('lang.Action')}}</th>
                             </tr>
                             </thead>
                             <tbody>

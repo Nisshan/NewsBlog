@@ -27,7 +27,7 @@ class CategoryController extends Controller
                     <li><a type="button" href="'.route('categories.show',[$category->id]).'" >View</a></li>
                     <li><a href="'.route('categories.edit',[$category->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a href="'.route('categories.destroy', [$category->id]).'">Delete</a></li>
+                    <li><a class="delete" href="'.route('categories.destroy', [$category->id]).'">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -156,7 +156,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = trim($request->name);
         $category->description = trim($request->description);
-        $category->slug = $request->slug;
+//        $category->slug = $request->slug;
         $category->keywords = strip_tags($request->keywords);
         $category->user_id = auth()->id();
         $category->meta_description = str_slug(trim($request->meta_description));
@@ -174,7 +174,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->hasPermissionTo('edit categories')) {
+        if (auth()->user()->hasPermissionTo('delete categories')) {
             $category = Category::find($id);
             $post = $category->posts->all();
             $cat = $category->children->all();

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'View Gallery')
+@section('title', 'View ' . $gallery->title)
 
 @section('content_header')
     <h1>
@@ -20,27 +20,27 @@
                 <div class="box-body">
                     <table class="table table-responsive table-striped">
                         <tr>
-                            <td>{{__('title')}}</td>
+                            <td>{{__('lang.Title')}}</td>
                             <td>{{$gallery->title}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Description')}}</td>
+                            <td>{{__('lang.Description')}}</td>
                             <td>{!! $gallery->description !!}</td>
                         </tr>
                         <tr>
-                            <td>{{__('slug')}}</td>
+                            <td>{{__('lang.Slug')}}</td>
                             <td>{{$gallery->slug}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('keywords')}}</td>
+                            <td>{{__('lang.keywords')}}</td>
                             <td>{{$gallery->keywords}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('meta_description')}}</td>
+                            <td>{{__('lang.Meta_Description')}}</td>
                             <td>{!! $gallery->meta_description !!}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Gallery cover')}}</td>
+                            <td>{{__('lang.Gallery_cover')}}</td>
                             <td>
                                 @if (strlen($gallery->cover)>5)
 
@@ -50,7 +50,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{__('Gallery images')}}</td>
+                            <td>{{__('lang.Gallery_images')}}</td>
                             <td>
                                 @if ((strlen($images)>5))
                                     @foreach($gallery->images as $image)

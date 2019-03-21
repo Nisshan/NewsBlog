@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Create District')
 
 @section('content_header')
 
@@ -18,7 +18,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="country">Select Country</label><br>
+                                <label for="country">{{__('lang.Select_Country')}}</label><br>
                                 <select id="country" name="country_id" class="form-control" style="width:350px" >
                                     <option>Select</option>
                                     @foreach($countries as $key => $country)
@@ -28,20 +28,20 @@
                             </div>
 
                             <div class="form-group" id="stateDiv" style="display: none">
-                                <label for="state">Select State</label><br>
+                                <label for="state">{{__('lang.Select_State')}}</label><br>
                                 <select name="state" id="state" class="form-control" style="width:350px" >
                                 </select>
                             </div>
                             <div class="form-group" style="display: none" id="districtDiv" >
-                                <label for="title">District Name</label>
+                                <label for="title">{{__('lang.District_Name')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter district name.." id="title" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control" name="description" >{{ old('description') }}</textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Submit!</button>
+                                <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                             </div>
                         </form>
                     </div>

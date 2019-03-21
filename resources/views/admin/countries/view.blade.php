@@ -1,13 +1,13 @@
 @extends('adminlte::page')
-@section('title', 'View country')
+@section('title', $country->name.  ' view' )
 
 @section('content_header')
     <h1>
-        {{__('Country')}}
-        <small>{{__('View Country Detail')}}</small>
+
+        {{__('lang.View_Country_Detail')}}
     </h1>
     <ol class="breadcrumb">
-        <li class="active">{{__('View Country Detail')}}</li>
+        <li ><b>{{__('lang.View_Country_Detail')}}</b></li>
     </ol>
 @stop
 @section('content')
@@ -20,23 +20,23 @@
                 <div class="box-body">
                     <table class="table table-responsive table-striped">
                         <tr>
-                            <td>{{__('name')}}</td>
+                            <td>{{__('lang.Name')}}</td>
                             <td>{{$country->name}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Description')}}</td>
+                            <td>{{__('lang.Description')}}</td>
                             <td>{!! $country->description !!}</td>
                         </tr>
                         <tr>
-                            <td>{{__('slug')}}</td>
+                            <td>{{__('lang.Slug')}}</td>
                             <td>{{$country->slug}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('keywords')}}</td>
+                            <td>{{__('lang.keywords')}}</td>
                             <td>{{$country->keywords}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('meta_description')}}</td>
+                            <td>{{__('lang.Meta_Description')}}</td>
                             <td>{!! $country->meta_description !!}</td>
                         </tr>
 

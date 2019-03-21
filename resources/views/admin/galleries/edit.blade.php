@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Edit ' . $gallery->title)
 
 @section('js')
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
@@ -30,22 +30,22 @@
                                 @method('PATCH')
                             @endif
                             <div class="form-group">
-                                <label for="name">Title*</label>
+                                <label for="name">{{__('lang.Title')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter name of Title..."
                                        name="title" id="title" value="{{$gallery->title}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">Description</label>
+                                <label for="title">{{__('lang.Description')}}</label>
                                 <textarea class="form-control summernote" placeholder="Description...."
                                           name="description" id="description">{{$gallery->description}}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="lfm">Select images</label>
+                                <label for="lfm">{{__('lang.Select_images')}}</label>
                                 <div class="input-group">
                                 <span class="input-group-btn">
                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                       <i class="fa fa-picture-o"></i> Choose
+                                       <i class="fa fa-picture-o"></i>{{__('lang.Image')}}
                                     </a>
                                 </span>
                                     <input id="thumbnail" readonly="readonly" class="form-control" type="text"
@@ -59,28 +59,28 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">{{__('Meta Description')}}</label>
+                                    <label for="title">{{__('lang.Meta_Description')}}</label>
                                     <input type="text" class="form-control" placeholder="Enter meta_description"
                                            id="metades" name="meta_description"
                                            value="{{ $gallery->meta_description}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">{{__('keywords')}}</label>
+                                    <label for="title">{{__('lang.keywords')}}</label>
                                     <input type="text" class="form-control" placeholder="Enter keywords"
                                            id="keywords" name="keywords" value="{{$gallery->keywords}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">{{__('Slug')}}</label>
+                                    <label for="title">{{__('lang.Slug')}}</label>
                                     <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                            id="slug" name="slug" readonly="readonly" value="{{ $gallery->slug}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lfm1">Select Cover</label>
+                                    <label for="lfm1">{{__('lang.Select_Cover')}}</label>
                                     <div class="input-group">
                                 <span class="input-group-btn">
                                     <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-primary">
-                                       <i class="fa fa-picture-o"></i> Choose Cover Image
+                                       <i class="fa fa-picture-o"></i> {{__('lang.Choose_Cover_Image')}}
                                     </a>
                                 </span>
                                         <input id="thumbnail1" readonly="readonly" class="form-control" type="text"
@@ -96,7 +96,7 @@
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-success">Submit!</button>
+                                    <button type="submit" class="btn btn-success">{{__('Submit')}}</button>
                                 </div>
                             </div>
                         </form>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use Illuminate\Http\Request;
-use App\Http\Resources\Country as CountryResource;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -25,7 +24,7 @@ class CountryController extends Controller
                     <li><a type="button" href="'.route('countries.show',[$country->id]).'" >View</a></li>
                     <li><a href="'.route('countries.edit',[$country->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a href="'.route('countries.destroy', [$country->id]).'">Delete</a></li>
+                    <li ><a class="delete" href="'.route('countries.destroy', [$country->id]).'">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -134,7 +133,7 @@ class CountryController extends Controller
 //            return new CountryResource($data['country']);
         } else {
             flash(__('You are not authorized to view Country'))->error();
-            return view('admin.countries.index');
+            return redirect()->action("CountryController@index");
         }
     }
 
@@ -146,12 +145,12 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        if (auth()->user()->hasPermissionTo('view country')) {
+        if (auth()->user()->hasPermissionTo('edit country')) {
             $data['country'] = Country::find($id);
             return view('admin.countries.edit')->with($data);
         } else {
             flash(__('You are not authorized to edit Country'))->error();
-            return view('admin.countries.index');
+            return redirect()->action("CountryController@index");
         }
     }
 
@@ -171,7 +170,6 @@ class CountryController extends Controller
         $country = Country::find($id);
         $country->name = trim($request->name);
         $country->description = trim($request->description);
-        $country->slug = $request->slug;
         $country->keywords = strip_tags(trim($request->keywords));
         $country->meta_description = str_limit(trim($request->meta_description, 200));
         $country->save();
@@ -188,7 +186,7 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->hasPermissionTo('view country')) {
+        if (auth()->user()->hasPermissionTo('delete country')) {
             $country = Country::find($id);
             $stat = $country->states->all();
             if (!$country) {
@@ -224,7 +222,7 @@ class CountryController extends Controller
 
         } else {
             flash(__('You are not authorized to delete Country'))->error();
-            return view('admin.countries.index');
+            return redirect()->action("CountryController@index");
         }
     }
 }

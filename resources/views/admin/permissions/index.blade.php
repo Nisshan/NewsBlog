@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Countries')
+@section('title', 'Permissions')
 
 @section('content_header')
 
@@ -13,17 +13,15 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Countries</h1>
+                    <h1 class="box-title">{{__('lang.Permissions')}}</h1>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-
-
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Name')}}</th>
                             </tr>
                             </thead>
                             <tbody>

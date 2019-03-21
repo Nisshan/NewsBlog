@@ -13,16 +13,19 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Districts</h1>
+                    <h1 class="box-title">{{__('lang.Districts')}}</h1>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Action</th>
+                            <tr>
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Name')}}</th>
+                                <th>{{__('lang.Action')}}</th>
+
+                            </tr>
                             </tr>
                             </thead>
                             <tbody>

@@ -27,7 +27,7 @@ Route::get('country/{id}','CountryController@viewsingle');
 
 Route::post('country/{id}','CountryController@store');
 
-Route::put('country/{id}','CounrtyController@edit');
+Route::put('country/{id}','CountryController@edit');
 
 Route::delete('country/{id}','CountryController@destroy');
 

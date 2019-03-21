@@ -94,14 +94,7 @@
       <path value="$PROJECT_DIR$/vendor/jeroennoten/laravel-adminlte" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/laracasts/flash" />
-      <path value="$PROJECT_DIR$/vendor/pusher/pusher-http-laravel" />
-      <path value="$PROJECT_DIR$/vendor/gajus/dindent" />
-      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
-      <path value="$PROJECT_DIR$/vendor/amranidev/ajaxis" />
-      <path value="$PROJECT_DIR$/vendor/amranidev/scaffold-interface" />
-      <path value="$PROJECT_DIR$/vendor/graham-campbell/manager" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />

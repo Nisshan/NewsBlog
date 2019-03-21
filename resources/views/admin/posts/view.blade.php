@@ -1,12 +1,12 @@
 @extends('adminlte::page')
-@section('title', 'View State')
+@section('title', 'View ' .$post->title)
 
 @section('content_header')
     <h1>
-        {{__('State Details')}}
+        {{__('Post Details')}}
     </h1>
     <ol class="breadcrumb">
-        <li class="active">{{__('State Details')}}</li>
+        <li class="active">{{__('Post Details')}}</li>
     </ol>
 @stop
 @section('content')
@@ -19,32 +19,29 @@
                 <div class="box-body">
                     <table class="table table-responsive table-striped">
                         <tr>
-                            <td>{{__('name')}}</td>
+                            <td>{{__('lang.Name')}}</td>
                             <td>{{$post->title}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('Description')}}</td>
+                            <td>{{__('lang.Description')}}</td>
                             <td>{!! $post->description !!}</td>
                         </tr>
 
                         <tr>
-                            <td>{{__('slug')}}</td>
+                            <td>{{__('lang.Slug')}}</td>
                             <td>{{$post->slug}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('keywords')}}</td>
+                            <td>{{__('lang.keywords')}}</td>
                             <td>{{$post->keywords}}</td>
                         </tr>
+
                         <tr>
-                            <td>{{__('user id')}}</td>
-                            <td>{{$post->user_id}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{__('status')}}</td>
+                            <td>{{__('lang.Status')}}</td>
                             <td>{{$post->status}}</td>
                         </tr>
                         <tr>
-                            <td>{{__('cover')}}</td>
+                            <td>{{__('lang.cover')}}</td>
                             <td>@if (strlen($post->cover)>5)
 
                                     <img src="{{url($post->cover)}}" class="img-thumbnail" width="100px"
@@ -53,7 +50,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{__('Gallery images')}}</td>
+                            <td>{{__('lang.Gallery_images')}}</td>
                             <td>
                                 @if ((strlen($images)>5))
                                     @foreach($post->images as $image)
@@ -63,13 +60,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{__('meta_description')}}</td>
+                            <td>{{__('lang.Meta_Description')}}</td>
                             <td>{!! $post->meta_description !!}</td>
                         </tr>
-                        <tr>
-                            <td>{{__('Created at')}}</td>
-                            <td>{{$post->created_at->toFormattedDateString()}}</td>
-                        </tr>
+                        {{--<tr>--}}
+                            {{--<td>{{__('Created at')}}</td>--}}
+                            {{--<td>{{$post->created_at->toFormattedDateString()}}</td>--}}
+                        {{--</tr>--}}
 
                     </table>
                 </div>

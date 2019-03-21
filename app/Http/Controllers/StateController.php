@@ -25,7 +25,7 @@ class StateController extends Controller
                     <li><a type="button" href="'.route('states.show',[$state->id]).'" >View</a></li>
                     <li><a href="'.route('states.edit',[$state->id]).'">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a href="'.route('states.destroy', [$state->id]).'">Delete</a></li>
+                    <li ><a class="delete"  href="'.route('states.destroy', [$state->id]).'">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -161,10 +161,10 @@ class StateController extends Controller
         $state = State::find($id);
         $state->name = trim($request->name);
         $state->description = trim($request->description);
-        $state->slug = $request->slug;
+//        $state->slug = $request->slug;
         $state->keywords = trim(($request->keywords));
         $state->meta_description = str_limit(trim($request->meta_description, 200));
-        $state->country_id = $request->country_id;
+//        $state->country_id = $request->country_id;
         $state->save();
         flash('State Name Edited Successfully')->success();
         return redirect()->action("StateController@index");

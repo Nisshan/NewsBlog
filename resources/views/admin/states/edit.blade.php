@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', $state->name. ' Edit')
 @section('js')
     <script>
         $(document).ready(function () {
@@ -16,7 +16,7 @@
             <div class="col-md-10">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title">{{__(' Edit state Details')}}</h1>
+                        <h1 class="box-title">{{__('lang.Edit_state_Details')}}</h1>
                     </div>
                     <div class="box-header with-border">
                         <form action="{{route('states.update', [$state->id])}}" method="POST">
@@ -26,42 +26,42 @@
 
 
                             <div class="form-group">
-                                <label for="title">{{__('country Name')}}</label>
+                                <label for="title">{{__('lang.Country_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
                                         id="title" name="country_id" readonly="readonly"
                                        value="{{$state->country->name}}" >
                             </div>
 
                             <div class="form-group">
-                                <label for="title">{{__('State Name')}}</label>
+                                <label for="title">{{__('lang.State_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
                                        placeholder="Enter state name.." id="title" name="name"
                                        value="{{ $state->name}}">
                             </div>
                             <div class="form-group">
-                                <label for="description"> {{__('Description')}}</label>
+                                <label for="description"> {{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description">{{ $state->description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('Meta Description')}}</label>
+                                <label for="title">{{__('lang.Meta_Description')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter meta_description"
                                        id="metades" name="meta_description"
                                        value="{{$state->meta_description}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('keywords')}}</label>
+                                <label for="title">{{__('lang.keywords')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter keywords"
                                        id="keywords" name="keywords" value="{{$state->keywords}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('Slug')}}</label>
+                                <label for="title">{{__('lang.Slug')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                        id="slug" name="slug" readonly="readonly" value="{{$state->slug}}">
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">{{__('Submit')}}</button>
+                                <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>
                             </div>
                         </form>
                     </div>

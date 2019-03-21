@@ -7,8 +7,6 @@ use App\Gallery;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {

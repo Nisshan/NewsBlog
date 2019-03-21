@@ -40,12 +40,12 @@ Route::get('get-state-list','DistrictController@getStateList');
 Route::get('getDistrictList','HomeController@getDistrictList');
 
 
-// front end routes
-Route::get('getStateList','HomeController@getStateList');
-Route::get('/single-news/{id}', 'newsController@singleNewsInfo');
-Route::get('/category-news/{id}', 'newsController@categoryNewsInfo');
-Route::get('/state-news/{id}', 'newsController@StateNews');
-Route::get('/district-news/{id}', 'newsController@DistrictNews');
+//// front end routes
+//Route::get('getStateList','HomeController@getStateList');
+//Route::get('/single-news/{id}', 'newsController@singleNewsInfo');
+//Route::get('/category-news/{id}', 'newsController@categoryNewsInfo');
+//Route::get('/state-news/{id}', 'newsController@StateNews');
+//Route::get('/district-news/{id}', 'newsController@DistrictNews');
 
 // Data tables
 Route::group(['middleware' => 'auth','prefix' => 'dataset'], function () {
