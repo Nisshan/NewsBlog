@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Create Gallery ' )
+@section('title', 'Create Gallery' )
 
 @section('js')
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>

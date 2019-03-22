@@ -39,6 +39,7 @@
 
 
                     </table>
+                    <hr>
 
                     <div><p>{{__('lang.Permission_Assigned')}}</p>
                     @foreach ($roles->permissions as $permission)

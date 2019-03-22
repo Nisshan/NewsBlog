@@ -20,9 +20,9 @@
                         <table class="table table-striped" id="table">
                             <thead>
                             <tr>
-                                <th>{{__('ID')}}</th>
-                                <th>{{__('Name')}}</th>
-                                <th>{{__('Action')}}</th>
+                                <th>{{__('lang.ID')}}</th>
+                                <th>{{__('lang.Name')}}</th>
+                                <th>{{__('lang.Action')}}</th>
 
 
                             </tr>

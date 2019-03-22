@@ -10,9 +10,9 @@ class Category extends Model
 {
 //    protected $table = 'category';
 
-    public function district(){
-       return $this->belongsToMany(District::class);
-    }
+//    public function district(){
+//       return $this->belongsToMany(District::class);
+//    }
     public function posts(){
         return $this->belongsToMany(Post::class,'category_post');
     }

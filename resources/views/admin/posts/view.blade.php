@@ -54,7 +54,7 @@
                             <td>
                                 @if ((strlen($images)>5))
                                     @foreach($post->images as $image)
-                                        <img src="{{$image->image}}" class="img" style="height: 100px; width: 60px; ">
+                                        <img src="{{url($image->image)}}" class="img" style="height: 100px; width: 60px; ">
                                     @endforeach
                                 @endif
                             </td>

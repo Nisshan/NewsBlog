@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class District extends Model
 {
     public function posts(){
-       return $this->hasMany(Post::class);
+       return $this->belongsToMany(Post::class,'district_post','post_id');
     }
     public function states(){
        return $this->belongsTo(State::class,'state_id');
@@ -19,6 +19,6 @@ class District extends Model
     protected $dates=['deleted_at'];
 
     protected $fillable = [
-        'name', 'description',
+        'name', 'description'
     ];
 }

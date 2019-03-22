@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', $district->name . ' view')
+@section('title',  'view '.$district->name )
 
 @section('content_header')
     <h1>
@@ -28,7 +28,7 @@
                         </tr>
                         <tr>
                             <td>{{__('lang.State_Name')}}</td>
-                            <td>{{$district->states->state_id}}</td>
+                            <td>{{$district->states->name}}</td>
                         </tr>
                         <tr>
                             <td>{{__('lang.Slug')}}</td>

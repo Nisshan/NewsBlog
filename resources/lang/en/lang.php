@@ -58,7 +58,12 @@
        'Edit_Users_Email' => 'Edit Users Email',
        'Edit_User_Roles' => 'Edit User Roles',
        'Breaking' => 'Breaking',
-       'Select_District' => 'Select District'
+       'Select_District' => 'Select District',
+       'Email' => 'Email',
+       'Roles_Assigned' => 'Roles Assigned',
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\District;
 use App\Post;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,15 @@ class TestSeeder extends Seeder
                 'post_id' => Post::select('id')->orderByRaw("RAND()")->first()->id,
             ]
         );
+
+        }
+        for($i=0;$i<100;$i++){
+            DB::table('district_post')->insert(
+                [
+                    'district_id' => District::select('id')->orderByRaw("RAND()")->first()->id,
+                    'post_id' => Post::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
 
         }
 

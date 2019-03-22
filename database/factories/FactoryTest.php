@@ -67,9 +67,8 @@ $factory -> define(App\Post::class, function (Faker $faker){
         'keywords' => $faker->word,
         'user_id' => rand(1,50),
         'meta_description' => $faker->sentence(5),
-        'image'  => 'https://via.placeholder.com/350x150',
+        'cover'  => $faker->image(),
         'status' => rand(1,3),
-        'district_id' =>rand(1,10),
     ];
 });
 
@@ -81,7 +80,7 @@ $factory -> define(App\Gallery::class, function (Faker $faker){
         'keywords' => $faker->word,
         'user_id' => rand(1,10),
         'meta_description' => $faker->sentence(5),
-        'cover'  => 'https://via.placeholder.com/350x150',
+        'cover'  => $faker->image(),
         'status' => rand(1,3),
 
     ];

@@ -44,8 +44,8 @@
                             <td>
                                 @if (strlen($gallery->cover)>5)
 
-                                    <img src="{{url($gallery->cover)}}" class="img-thumbnail" width="100px"
-                                         height="100px">
+                                    <img src="{{url($gallery->cover)}}" class="img img-responsive"
+                                         height="100px" width="100px">
                                 @endif
                             </td>
                         </tr>
@@ -54,7 +54,7 @@
                             <td>
                                 @if ((strlen($images)>5))
                                     @foreach($gallery->images as $image)
-                                        <img src="{{$image->url}}" class="img" style="height: 100px; width: 60px; ">
+                                        <img src="{{url($image->url)}}" class="img" style="height: 100px; width: 60px; ">
                                     @endforeach
                                 @endif
                             </td>

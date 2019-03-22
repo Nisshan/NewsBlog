@@ -18,7 +18,7 @@
 
                             <div class="form-group">
                                 <label for="name">{{__('lang.Category')}}</label>
-                                <input type="text" class="form-control" placeholder="Enter name of Title..." name="name" id="title">
+                                <input type="text" class="form-control" placeholder="Enter name of Title..." name="name" id="title" value="{{old('name')}}">
                             </div>
                             <div>
                                 <label for="name">{{__('lang.Sub-Category')}}</label>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label for="title">{{__('lang.Description')}}</label>
                                 <textarea class="form-control summernote" placeholder="Description...."
-                                          name="description" id="summernote"></textarea>
+                                          name="description" id="summernote">{{old('description')}}</textarea>
                             </div>
 
                             <div class="form-group">

@@ -14,7 +14,7 @@ class Post extends Model
         return $this->belongsToMany(Category::class,'category_post');
     }
     public function districts(){
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class,'district_post','district_id');
     }
     public function images(){
         return $this->hasMany(PostImage::class);

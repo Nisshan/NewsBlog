@@ -23,12 +23,12 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="country_title">{{__('lang.Country_Name')}}</label>
-                                <input type="text" class="form-control" required="required" placeholder="Enter country name.." id="title" name="name"  >
+                                <label for="title">{{__('lang.Country_Name')}}</label>
+                                <input type="text" class="form-control" required="required" placeholder="Enter country name.." id="title" name="name"  value=" {{old('name')}}" >
                             </div>
                             <div class="form-group">
-                                <label for="country_description">{{__('lang.Description')}}</label>
-                                <textarea id="summernote" placeholder="Description..." class="form-control" name="description"></textarea>
+                                <label for="summernote">{{__('lang.Description')}}</label>
+                                <textarea id="summernote" placeholder="Description..." class="form-control" name="description"  required="required">{{old('description')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>

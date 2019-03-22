@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Create roles')
-
+@section('content')
 @include('flash::message')
 <div class="container">
     <div class="row justify-content-center">

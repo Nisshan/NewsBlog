@@ -102,7 +102,6 @@ class PostController extends Controller
         ]);
         $post = new Post;
         $post->cover = parse_url($c)['path'];
-        $post->image =  parse_url($i)['path'];
         $post->title = trim($request->title);
         $post->description = trim($request->description);
         $post->slug =str_slug($post['title'], '-');
@@ -114,15 +113,18 @@ class PostController extends Controller
         } while ($validatedSlug);
         $post->keywords = implode(',', $this->extractKeyWords($post['description']));
         $post->meta_description = str_limit(trim($post['description']), 200);
-        $post->district_id=$request->title;
         $post->user_id = auth()->id();
         $post->save();
+
+        $district = District:: find($request->district_id);
+        $post->districts()->attach($district);
 
         $category = Category::find($request->category_id);
         $post->category()->attach($category);
 
-        $imageModel = [];
 
+
+        $imageModel = [];
         foreach ($imageList as $image) {
             $imageModel[] = [
                 "post_id" => $post->id,
@@ -130,7 +132,6 @@ class PostController extends Controller
             ];
         }
         $post->images()->createMany($imageModel);
-
 
         flash('Post Created Successfully')->success();
         return redirect()->action('PostController@index');
@@ -227,6 +228,9 @@ class PostController extends Controller
 
         $category = Category::find($request);
         $post->category()->sync($category);
+
+        $district = District:: find($request->district_id);
+        $post->districts()->sync($district);
 
         $imageModel = [];
         foreach ($imageList as $image) {

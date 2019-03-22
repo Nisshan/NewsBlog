@@ -19,7 +19,7 @@
 
                             <div class="form-group">
                                 <label for="country">{{__('lang.Select_Country')}}</label><br>
-                                <select id="country" name="country_id" class="form-control" style="width:350px" >
+                                <select id="country" name="country_id" class="form-control" style="width:350px" value="{{old('country')}}">
                                     <option>Select</option>
                                     @foreach($countries as $key => $country)
                                         <option value="{{$key}}"> {{$country}}</option>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">{{__('lang.Description')}}</label>
-                                <textarea id="summernote" placeholder="Description..." class="form-control" name="description" >{{ old('description') }}</textarea>
+                                <textarea id="summernote" placeholder="Description..." class="form-control" name="description" required="required">{{ old('description') }} </textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>

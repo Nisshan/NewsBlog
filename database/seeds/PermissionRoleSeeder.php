@@ -54,13 +54,13 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(["name"=>'view role']);
 
 
-        $role = Role::create(["name"=>'super-admin']);
+        $role = Role::create(["name"=>'Super Admin']);
         $role->givePermissionTo(Permission::all());
 
-        $role = Role::create(["name"=>'editor']);
+        $role = Role::create(["name"=>'Editor']);
         $role-> givePermissionTo(['edit post','edit gallery','edit categories','view post','view gallery','view categories']);
 
-        $role = Role::create(["name"=>'creator']);
+        $role = Role::create(["name"=>'Creator']);
         $role-> givePermissionTo(['edit post','edit gallery','edit categories','create post','create gallery','create categories','view post','view gallery','view categories']);
     }
 }

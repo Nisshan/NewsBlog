@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -21,14 +22,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('login', 'API\AuthController@login');
     Route::post('register', 'API\AuthController@register');
 
-Route::get('countries','CountryController@view');
 
-Route::get('country/{id}','CountryController@viewsingle');
+Route::get('posts','API\PostController@index');
 
-Route::post('country/{id}','CountryController@store');
+Route::get('categories','API\CategoryController@index');
 
-Route::put('country/{id}','CountryController@edit');
+Route::get('districts','API\DistrictController@index');
 
-Route::delete('country/{id}','CountryController@destroy');
+
+
+
 
 
