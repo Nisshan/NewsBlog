@@ -8,6 +8,7 @@
         $(function () {
             $('#lfm').filemanager('image');
             $('#lfm1').filemanager('image');
+            $('#keywords').tagator();
         })
     </script>
 @stop
@@ -71,7 +72,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="title">{{__('lang.Slug')}}</label>
-                                    <input type="text" class="form-control" required="required" placeholder="Enter slug..."
+                                    <input type="text" class="form-control" required="required"
+                                           placeholder="Enter slug..."
                                            id="slug" name="slug" readonly="readonly" value="{{ $gallery->slug}}">
                                 </div>
 

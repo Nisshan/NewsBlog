@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'View ' . $role->name)
+@section('title', 'View ' . $roles->name)
 @section('css')
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 @stop

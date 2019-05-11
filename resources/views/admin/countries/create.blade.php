@@ -16,7 +16,7 @@
             <div class="col-md-10">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title" for="Create_Country">{{__('lang.Create_Country_Details')}}</h1>
+                        <h1 class="box-title">{{__('lang.Create_Country_Details')}}</h1>
                     </div>
                     <div class="box-header with-border">
                         <form action="{{ route('countries.store')}}" method="POST">
@@ -28,7 +28,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="summernote">{{__('lang.Description')}}</label>
-                                <textarea id="summernote" placeholder="Description..." class="form-control" name="description"  required="required">{{old('description')}}</textarea>
+                                <textarea id="summernote" placeholder="Description..." class="form-control"  name="description"  required="required">{{old('description')}}</textarea>
+
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">{{__('lang.Submit')}}</button>

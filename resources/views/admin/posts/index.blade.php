@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Districts</h1>
+                    <h1 class="box-title">Posts</h1>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -69,8 +69,8 @@
                     dataType: false,
                     data: {'_method': 'DELETE', 'submit': true}
                 }).always(function (data) {
-                    // window.location.reload();
-                    window.console.log();
+                    window.location.reload();
+
                 });
             }else
                 alert("You have cancelled!");

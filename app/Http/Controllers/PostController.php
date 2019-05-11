@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Country;
+use App\Hash;
 use App\PostImage;
 use App\District;
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -26,10 +28,10 @@ class PostController extends Controller
              <div class="btn-group">
                 <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a type="button" href="'.route('posts.show',[$post->id]).'" >View</a></li>
-                    <li><a type="button" href="'.route('posts.edit',[$post->id]).'">Edit</a></li>
+                    <li><a type="button" href="' . route('posts.show', [$post->id]) . '" >View</a></li>
+                    <li><a type="button" href="' . route('posts.edit', [$post->id]) . '">Edit</a></li>
                     <li class="divider"></li>
-                    <li  ><a class="delete" type="button" href="'.route('posts.destroy', [$post->id]).'">Delete</a></li>
+                    <li  ><a class="delete" type="button" href="' . route('posts.destroy', [$post->id]) . '">Delete</a></li>
                 </ul>
             ';
         })
@@ -38,8 +40,14 @@ class PostController extends Controller
 
     public function index()
     {
-        $data['posts'] = Post::all();
-        return view('admin.posts.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['posts'] = Post::all();
+            return view('admin.posts.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
+
     }
 
     /**
@@ -49,14 +57,13 @@ class PostController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->hasPermissionTo('create post')) {
+        if (auth()->user()->hasPermissionTo('create post')) {
             $data['districts'] = District::all();
-            $data['states'] =  DB::table("states")->pluck("name","id");
-            $data['categories'] = DB::table("categories")->pluck("name","id");
-            $data['countries'] = DB::table("countries")->pluck("name","id");
+            $data['states'] = DB::table("states")->pluck("name", "id");
+            $data['categories'] = DB::table("categories")->pluck("name", "id");
+            $data['countries'] = DB::table("countries")->pluck("name", "id");
             return view('admin.posts.create')->with($data);
-        }
-        else{
+        } else {
             flash(__('you are not authorized to create post'));
             return view('admin.posts.index');
         }
@@ -65,7 +72,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function extractKeyWords($string)
@@ -80,15 +87,23 @@ class PostController extends Controller
         arsort($wordCountArr);
         return array_keys(array_slice($wordCountArr, 0, 10));
     }
+
     public function store(Request $request)
     {
         $image = explode(",", $request->images);
+        $tag= explode(',',$request->tags);
+
+        foreach ($tag as $t){
+            $ta[] = $t;
+        }
+
+
+
         $imageList = [];
         foreach ($image as $i) {
             $imageList[] = parse_url($i)['path'];
         }
 
-//        $images = implode(',',$imageList);
         $covers = explode(',', $request->cover);
         $coverlist = [];
         foreach ($covers as $c) {
@@ -104,7 +119,7 @@ class PostController extends Controller
         $post->cover = parse_url($c)['path'];
         $post->title = trim($request->title);
         $post->description = trim($request->description);
-        $post->slug =str_slug($post['title'], '-');
+        $post->slug = str_slug($post['title'], '-');
         do {
             $validatedSlug = Post::where('slug', $post->slug)->first();
             if ($validatedSlug) {
@@ -123,7 +138,6 @@ class PostController extends Controller
         $post->category()->attach($category);
 
 
-
         $imageModel = [];
         foreach ($imageList as $image) {
             $imageModel[] = [
@@ -131,7 +145,18 @@ class PostController extends Controller
                 "image" => $image
             ];
         }
+
+        foreach ($ta as $hash){
+            $hashs[]= [
+                'post_id' => $post->id,
+                'hash' =>$hash,
+            ];
+        }
         $post->images()->createMany($imageModel);
+        $post->hashs()->createMany($hashs);
+
+
+
 
         flash('Post Created Successfully')->success();
         return redirect()->action('PostController@index');
@@ -140,24 +165,24 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if(auth()->user()->hasPermissionTo('view post')) {
+        if (auth()->user()->hasPermissionTo('view post')) {
 
-            $data['images']=[];
+            $data['images'] = [];
             $data['post'] = Post::with('images')->find($id);
             $images = $data['post']->images;
-            foreach($images as $image){
-                array_push($data['images'],$image->image);
+            foreach ($images as $image) {
+                array_push($data['images'], $image->image);
             }
-            $data['images']=implode(',',$data['images']);
-            $data['category'] = Category::all();
+            $data['images'] = implode(',', $data['images']);
+//            $data['category'] = Category::all();
+//            $data['district'] = District::all();
             return view('admin.posts.view')->with($data);
-        }
-        else{
+        } else {
             flash(__('you are not authorized to view post Details'));
             return view('admin.posts.index');
         }
@@ -166,24 +191,33 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if(auth()->user()->hasPermissionTo('edit post')) {
-            $data['images']=[];
+        if (auth()->user()->hasPermissionTo('edit post')) {
+            $data['tags'] = Post::with('hashs')->find($id);
+            $tags = $data['tags']->hashs;
+            $data['tagg'] = [];
+            foreach ($tags as $tag){
+                array_push($data['tagg'],$tag->hash) ;
+            }
+            $data['taggs'] = implode(',',$data['tagg']);
+            $data['images'] = [];
             $data['post'] = Post::with('images')->find($id);
             $images = $data['post']->images;
-            foreach($images as $image){
-                array_push($data['images'],$image->image);
+            foreach ($images as $image) {
+                array_push($data['images'], $image->image);
             }
-            $data['images']=implode(',',$data['images']);
-            $data['categories'] = Category::all();
-            $data['district'] = District::all();
+            $data['images'] = implode(',', $data['images']);
+
+            $data['districts'] = District::all();
+            $data['states'] = DB::table("states")->pluck("name", "id");
+            $data['categories'] = DB::table("categories")->pluck("name", "id");
+            $data['countries'] = DB::table("countries")->pluck("name", "id");
             return view('admin.posts.edit')->with($data);
-        }
-        else{
+        } else {
             flash(__('you are not authorized to edit post'));
             return view('admin.posts.index');
         }
@@ -193,8 +227,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -204,19 +238,21 @@ class PostController extends Controller
         foreach ($image as $i) {
             $imageList[] = parse_url($i)['path'];
         }
-        $images = implode(',',$imageList);
+        $images = implode(',', $imageList);
         $covers = explode(',', $request->cover);
         $coverlist = [];
         foreach ($covers as $c) {
             $coverlist[] = parse_url($c)['path'];
 
         }
-        $post= Post::find($id);
-        foreach ($post->images as $image){
+        $post = Post::find($id);
+        foreach ($post->images as $image) {
             $image->delete();
         }
+        foreach ($post->hashs as $hash){
+            $hash->delete();
+        }
         $post->cover = parse_url($c)['path'];
-        $post->image = $images;
         $post->title = trim($request->title);
         $post->description = trim($request->description);
 //        $post->slug =$request->slug;
@@ -239,7 +275,20 @@ class PostController extends Controller
                 "image" => $image
             ];
         }
+        $tag= explode(',',$request->tags);
+
+        foreach ($tag as $t){
+            $ta[] = $t;
+        }
+        foreach ($ta as $hash) {
+            $hashs[] = [
+                'post_id' => $post->id,
+                'hash' => $hash,
+            ];
+        }
         $post->images()->createMany($imageModel);
+        $post->hashs()->createMany($hashs);
+
 
         flash('Post Created Successfully')->success();
         return redirect()->action('PostController@index');
@@ -248,7 +297,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -278,10 +327,34 @@ class PostController extends Controller
                 ], 400);
 
             }
-        }
-        else{
+        } else {
             flash(__('you are not authorized to Delete Post'));
             return view('admin.posts.index');
         }
     }
+
+    public function todaypost(){
+        if (auth()->user()->hasPermissionTo('view post')) {
+        $data['posts'] = Post::where('created_at', '>=', Carbon::today()->toDateString())->get();
+        return view('admin.posts.todaypost')->with($data);
+        }
+        else {
+            flash(__('you are not authorized to Delete Post'));
+            return view('admin.posts.index');
+        }
+
+    }
+
+    public function  breakingnews(){
+        if (auth()->user()->hasPermissionTo('view post')) {
+            $data['posts'] = Post::where('created_at', '>=', Carbon::today()->toDateString())->where('status', 1)->get();
+            return view('admin.posts.breakingnews')->with($data);
+        }
+        else {
+            flash(__('you are not authorized to Delete Post'));
+            return view('admin.posts.index');
+        }
+
+    }
+
 }

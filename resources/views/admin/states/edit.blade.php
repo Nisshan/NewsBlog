@@ -5,6 +5,8 @@
     <script>
         $(document).ready(function () {
             $('#summernote').summernote();
+            $('#keywords').tagator();
+
         });
     </script>
 @stop
@@ -27,15 +29,19 @@
 
                             <div class="form-group">
                                 <label for="title">{{__('lang.Country_Name')}}</label>
-                                <input type="text" class="form-control" required="required"
-                                        id="title" name="country_id" readonly="readonly"
-                                       value="{{$state->country->name}}" >
+                                <select name="country_id" id="title" class="form-control myselect" >
+                                    <option selected >{{$state->country->name}}</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="title">{{__('lang.State_Name')}}</label>
+                                <label for="statename">{{__('lang.State_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
-                                       placeholder="Enter state name.." id="title" name="name"
+                                       placeholder="Enter state name.." id="statename" name="name"
                                        value="{{ $state->name}}">
                             </div>
                             <div class="form-group">
@@ -44,18 +50,18 @@
                                           name="description">{{ $state->description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.Meta_Description')}}</label>
+                                <label for="metades">{{__('lang.Meta_Description')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter meta_description"
                                        id="metades" name="meta_description"
                                        value="{{$state->meta_description}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.keywords')}}</label>
+                                <label for="keywords">{{__('lang.keywords')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter keywords"
                                        id="keywords" name="keywords" value="{{$state->keywords}}">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.Slug')}}</label>
+                                <label for="slug">{{__('lang.Slug')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                        id="slug" name="slug" readonly="readonly" value="{{$state->slug}}">
                             </div>

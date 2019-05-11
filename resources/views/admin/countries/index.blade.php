@@ -45,7 +45,7 @@
                 ajax: '{{ url('dataset/getCountry') }}',
                 columns: [
                     { data: 'id', name: 'ID' },
-                    { data: 'name', name: 'Title' },
+                    { data: 'name', name: 'Name ' },
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

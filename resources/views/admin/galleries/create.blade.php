@@ -24,14 +24,14 @@
                         <form action="{{route('galleries.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="name">{{__('lang.Title')}}</label>
+                                <label for="title">{{__('lang.Title')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter name of Title..."
                                        name="title" id="title">
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.Description')}}</label>
-                                <textarea class="form-control summernote" placeholder="Description...."
-                                          name="description" id="description"></textarea>
+                                <label for="summernote">{{__('lang.Description')}}</label>
+                                <textarea class="form-control " placeholder="Description...."
+                                          name="description" id="summernote"></textarea>
                             </div>
 
                             <div class="form-group">

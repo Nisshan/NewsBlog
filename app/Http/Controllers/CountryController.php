@@ -21,10 +21,10 @@ class CountryController extends Controller
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a type="button" href="'.route('countries.show',[$country->id]).'" >View</a></li>
-                    <li><a href="'.route('countries.edit',[$country->id]).'">Edit</a></li>
+                    <li><a type="button" href="' . route('countries.show', [$country->id]) . '" >View</a></li>
+                    <li><a href="' . route('countries.edit', [$country->id]) . '">Edit</a></li>
                     <li class="divider"></li>
-                    <li ><a class="delete" href="'.route('countries.destroy', [$country->id]).'">Delete</a></li>
+                    <li ><a class="delete" href="' . route('countries.destroy', [$country->id]) . '">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -48,11 +48,15 @@ class CountryController extends Controller
 //    }
 
 
-
     public function index()
     {
-        $data['countries'] = Country::all();
-        return view('admin.countries.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['countries'] = Country::all();
+            return view('admin.countries.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
 
 
     }

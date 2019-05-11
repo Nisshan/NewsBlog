@@ -36,8 +36,13 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data['role'] = Role::all();
-        return view('admin.roles.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['role'] = Role::all();
+            return view('admin.roles.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
 
 
     }

@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
@@ -200,6 +200,22 @@ return [
                 [
                     'text' => 'Create',
                     'url'  => 'admin/galleries/create',
+                ]
+            ]
+
+
+        ],
+        [
+            'text' =>'Events',
+            'icon' => 'list',
+            'submenu' => [
+                [
+                    'text' => 'Manage',
+                    'url'  => 'admin/events',
+                ],
+                [
+                    'text' => 'Create',
+                    'url'  => 'admin/events/create',
                 ]
             ]
 

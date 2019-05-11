@@ -19,10 +19,10 @@ class DynamicDependent extends Controller
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a type="button" href="'.route('districts.show',[$district->id]).'" >View</a></li>
-                    <li><a href="'.route('districts.edit',[$district->id]).'">Edit</a></li>
+                    <li><a type="button" href="' . route('districts.show', [$district->id]) . '" >View</a></li>
+                    <li><a href="' . route('districts.edit', [$district->id]) . '">Edit</a></li>
                     <li class="divider"></li>
-                    <li  ><a  class="delete" href="'.route('districts.destroy', [$district->id]).'">Delete</a></li>
+                    <li  ><a  class="delete" href="' . route('districts.destroy', [$district->id]) . '">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -32,9 +32,15 @@ class DynamicDependent extends Controller
 
     public function index()
     {
-        $data['districts'] = District::all();
-        // $data['districts'] = District::with('State')->get();
-        return view('admin.districts.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['districts'] = District::all();
+            // $data['districts'] = District::with('State')->get();
+            return view('admin.districts.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
+
     }
 
     public function getStateList(Request $request)

@@ -7,6 +7,9 @@
         $(function () {
             $('#lfm').filemanager('image');
             $('#lfm1').filemanager('image');
+            $('#tags').tagator();
+            $('#keywords').tagator();
+
         })
     </script>
 @stop
@@ -27,29 +30,31 @@
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
-                                <label for="name">{{__('lang.Title')}}</label>
+                                <label for="title">{{__('lang.Title')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter name of Title..."
                                        name="title"
                                        id="title" value="{{$post->title}}">
                             </div>
                             <div class="form-group">
-                                <label for="description">{{__('lang.Description')}}</label>
+                                <label for="summernote">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description">{{$post->description}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.Meta_Description')}}</label>
+                                <label for="metades">{{__('lang.Meta_Description')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter meta_description"
                                        id="metades" name="meta_description"
                                        value="{{ $post->meta_description  }}">
                             </div>
+
                             <div class="form-group">
-                                <label for="title">{{__('lang.keywords')}}</label>
-                                <input type="text" class="form-control" placeholder="Enter keywords"
-                                       id="keywords" name="keywords" value="{{ $post->keywords}}">
+                                <label for="keywords">{{'lang.Keywords'}}</label>
+                                <input type="text" class="form-control" placeholder="Enter keywords..."
+                                       name="keywords" id="keywords"  value="{{$post->keywords}}">
+
                             </div>
                             <div class="form-group">
-                                <label for="title">{{__('lang.Slug')}}</label>
+                                <label for="slug">{{__('lang.Slug')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                        id="slug" name="slug" readonly="readonly" value="{{ $post->slug}}">
                             </div>
@@ -57,12 +62,13 @@
 
                             <div class="form-group">
                                 <div class="radio">
-                                    <label><b>{{__('lang.Status')}}</b> <br><input type="radio" name="status"  value="0" {{ $post->status == '0' ? 'checked' : '' }}>{{__('lang.Breaking')}}</label>
+                                    <b>{{__('lang.Status')}}</b> <br>
+                                    <label> <input type="radio" name="status"  value="0" {{ $post->status == '0' ? 'checked' : '' }}>{{__('lang.Active')}}</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="status" value="1" {{ $post->status == '1' ? 'checked' : '' }}>{{__('lang.Active')}}</label>
+                                    <label><input type="radio" name="status" value="1" {{ $post->status == '1' ? 'checked' : '' }}>{{__('lang.Breaking')}}</label>
                                 </div>
-                                <div class="form-group">
+                                <div class="radio">
                                     <label ><input type="radio" name="status"  value ='2' {{ $post->status == '2' ? 'checked' : '' }}>{{__('lang.Inactive')}}</label>
                                 </div>
                             </div>
@@ -100,6 +106,12 @@
                                             <img src="{{$post->cover}}" class="img img-responsive"
                                                  style="height: 60px; width: 40px;"/>
                                         @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tags">{{'Tags'}}</label>
+                                        <input type="text" class="form-control" placeholder="Enter name of tags..."
+                                               name="tags" id="tags" value="{{$taggs}}">
+
                                     </div>
 
                                     <div class="form-group">

@@ -46,7 +46,7 @@
                 ajax: '{{ url('dataset/getState') }}',
                 columns: [
                     { data: 'id', name: 'ID' },
-                    { data: 'name', name: 'Title' },
+                    { data: 'name', name: 'Name' },
                     {data: 'action', name: 'Action', orderable: false, searchable: false}
                 ]
             });

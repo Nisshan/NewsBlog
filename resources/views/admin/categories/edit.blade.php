@@ -1,6 +1,14 @@
 @extends('adminlte::page')
 
 @section('title', 'Edit '. $category->name )
+@section('js')
+    <script>
+        $(function () {
+            $('#keywords').tagator();
+
+        })
+    </script>
+@stop
 
 @section('content')
     @include('flash::message')
@@ -22,7 +30,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{__('lang.parent_name')}}</label>
-                                <input type="text" class="form-control" readonly="readonly" id="title" value="{{$category->parent->name}}">
+                                <input type="text" class="form-control" readonly="readonly" id="title" value="{{$category->parent['name']}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">{{__('lang.Description')}}</label>
+                                <textarea class="form-control summernote" placeholder="Description...."
+                                          name="description" id="summernote">{!! $category->description  !!} </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="title">{{__('lang.Meta_Description')}}</label>
@@ -39,12 +52,6 @@
                                 <label for="title">{{__('lang.Slug')}}</label>
                                 <input type="text" class="form-control" required="required" placeholder="Enter slug..."
                                        id="slug" name="slug" readonly="readonly" value="{{ $category->slug}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="title">{{__('lang.Description')}}</label>
-                                <textarea class="form-control summernote" placeholder="Description...."
-                                          name="description" id="summernote">{!! $category->description  !!} </textarea>
                             </div>
                             <div class="form-group">
 

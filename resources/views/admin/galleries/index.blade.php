@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+w@extends('adminlte::page')
 
 @section('title', 'Galleries')
 

@@ -2,6 +2,7 @@
 
 @section('title', 'Create State')
 
+
 @section('content')
     @include('flash::message')
     <div class="container">
@@ -16,9 +17,10 @@
                               method="POST">
                             @csrf
 
-                            <div class="form-group">
-                                <label for="Country">{{__('lang.Country_Name')}}</label>
+                            <div class="form-group" id="formid">
+                                <label for="country">{{__('lang.Country_Name')}}</label>
                                 <select name="country_id" id="country" class="form-control myselect">
+                                    <option selected hidden >Select</option>
                                     @foreach($countries as $country)
                                         <option value="{{$country->id}}">{{$country->name}}
                                         </option>
@@ -32,7 +34,7 @@
                                 >
                             </div>
                             <div class="form-group">
-                                <label for="description">{{__('lang.Description')}}</label>
+                                <label for="summernote">{{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description"></textarea>
                             </div>
@@ -56,7 +58,6 @@
             </div>
         </div>
     @endif
-
 @endsection
 
 

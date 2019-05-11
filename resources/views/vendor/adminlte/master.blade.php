@@ -21,8 +21,16 @@
     <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Summernote-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <script src="http://demo.expertphp.in/js/jquery.js"></script>
+
+
+    <!--CSS-->
+    <link rel="stylesheet" href="{{asset('tagator-master/fm.tagator.jquery.min.css')}}"/>
+
+
+
+
 
 
 @if(config('adminlte.plugins.select2'))
@@ -84,8 +92,10 @@
 @endif
 
 @yield('adminlte_js')
-
+<!--JS-->
+<script src="{{asset('tagator-master/fm.tagator.jquery.js')}}"></script>
 <script>
+
     $(document).ready(function() {
         $('#summernote').summernote({
             height:200,
@@ -98,6 +108,7 @@
     });
 
 </script>
+
 
 </body>
 </html>

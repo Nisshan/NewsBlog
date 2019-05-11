@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'View ' .$post->title)
+@section('title', 'View ' . $post->title)
 
 @section('content_header')
     <h1>
@@ -63,12 +63,34 @@
                             <td>{{__('lang.Meta_Description')}}</td>
                             <td>{!! $post->meta_description !!}</td>
                         </tr>
+
                         {{--<tr>--}}
                             {{--<td>{{__('Created at')}}</td>--}}
                             {{--<td>{{$post->created_at->toFormattedDateString()}}</td>--}}
                         {{--</tr>--}}
 
                     </table>
+                    <hr>
+                    <div><p>{{__('lang.Category_tagged')}}</p>
+                        @foreach($post->category as $category)
+
+                            {{--<td>{{__('Assigned Role')}}</td>--}}
+                            <p><span class="w3-tag w3-blue">{{$category->name}}</span></p>
+                            {{--<td>{{$role->name}}</td>--}}
+
+                        @endforeach
+                    </div>
+                    <br>
+
+                    <div><p>{{__('lang.District_tagged')}}</p>
+                        @foreach($post->districts as $district)
+
+                            {{--<td>{{__('Assigned Role')}}</td>--}}
+                            <p><span class="w3-tag w3-blue">{{$district->name}}</span></p>
+                            {{--<td>{{$role->name}}</td>--}}
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

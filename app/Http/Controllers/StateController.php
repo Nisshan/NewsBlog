@@ -22,10 +22,10 @@ class StateController extends Controller
              <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a type="button" href="'.route('states.show',[$state->id]).'" >View</a></li>
-                    <li><a href="'.route('states.edit',[$state->id]).'">Edit</a></li>
+                    <li><a type="button" href="' . route('states.show', [$state->id]) . '" >View</a></li>
+                    <li><a href="' . route('states.edit', [$state->id]) . '">Edit</a></li>
                     <li class="divider"></li>
-                    <li ><a class="delete"  href="'.route('states.destroy', [$state->id]).'">Delete</a></li>
+                    <li ><a class="delete"  href="' . route('states.destroy', [$state->id]) . '">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -35,9 +35,15 @@ class StateController extends Controller
 
     public function index()
     {
-        $data['states'] = State::with('Country')->get();
-        $data['states'] = State::all();
-        return view('admin.states.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['states'] = State::with('Country')->get();
+            $data['states'] = State::all();
+            return view('admin.states.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
+
     }
 
     /**
@@ -47,11 +53,10 @@ class StateController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->hasPermissionTO('create state')){
+        if (auth()->user()->hasPermissionTO('create state')) {
             $data['countries'] = Country::all();
             return view('admin.states.create')->with($data);
-        }
-        else{
+        } else {
             flash(__('You are not authorized to Create State'))->error();
             return view('admin.states.index');
         }
@@ -114,11 +119,10 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        if(auth()->user()->hasPermissionTo('view state')){
+        if (auth()->user()->hasPermissionTo('view state')) {
             $data['state'] = State::find($id);
             return view('admin.states.view')->with($data);
-        }
-        else{
+        } else {
             flash(__('you are not authorized to view State Details'));
             return view('admin.states.index');
         }
@@ -133,12 +137,12 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        if(auth()->user()->hasPermissionTo('edit state')){
+        if (auth()->user()->hasPermissionTo('edit state')) {
             $data['country'] = Country::find($id);
+            $data['countries'] = Country::all();
             $data['state'] = State::find($id);
             return view('admin.states.edit')->with($data);
-        }
-        else{
+        } else {
             flash(__('you are not authorized to view edit Details'));
             return view('admin.states.index');
         }
@@ -164,7 +168,7 @@ class StateController extends Controller
 //        $state->slug = $request->slug;
         $state->keywords = trim(($request->keywords));
         $state->meta_description = str_limit(trim($request->meta_description, 200));
-//        $state->country_id = $request->country_id;
+        $state->country_id = $request->country_id;
         $state->save();
         flash('State Name Edited Successfully')->success();
         return redirect()->action("StateController@index");
@@ -209,8 +213,7 @@ class StateController extends Controller
                     'message' => "State cannot be deleted"
                 ], 400);
             }
-        }
-        else{
+        } else {
             flash(__('you are not authorized to delete State Details'));
             return view('admin.states.index');
         }

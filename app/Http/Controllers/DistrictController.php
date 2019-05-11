@@ -17,10 +17,16 @@ class DistrictController extends Controller
      */
     public function index()
     {
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['districts'] = District::all();
+//         $data['districts'] = District::with('State')->get();
+            return view('admin.districts.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
 
-        $data['districts'] = District::all();
-        // $data['districts'] = District::with('State')->get();
-        return view('admin.districts.index')->with($data);
+
     }
 
     public function getStateList(Request $request)

@@ -60,9 +60,8 @@ return [
     'Roles_Assigned' => 'भूमिकाहरू :',
     'Choose_Images' => 'छविहरू छान्नुहोस्',
     'Choose_Cover_Image' => 'आवरण छविहरू छान्नुहोस्',
-
-
-
+    'Category_tagged' => 'ट्याग गरिएको श्रेणी ',
+    'District_tagged' => 'ट्याग गरिएको जिल्ला',
 
 ];
 

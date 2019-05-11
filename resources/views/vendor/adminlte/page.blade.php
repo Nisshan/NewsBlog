@@ -57,27 +57,48 @@
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
-                        <li>
-                            @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
-                                <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
-                                    <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
-                                </a>
-                            @else
-                                <a href="#"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                >
-                                    <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
-                                </a>
-                                <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
-                                    @if(config('adminlte.logout_method'))
-                                        {{ method_field(config('adminlte.logout_method')) }}
+                        {{--<div class="btn-group">--}}
+                            {{--<button type="button" class="btn-lg btn-primary">INFO</button>--}}
+                            {{--<button type="button" class="btn-lg btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--}}
+                                {{--<span class="caret"></span>--}}
+                                {{--<span class="sr-only">Toggle Dropdown</span>--}}
+                            {{--</button>--}}
+                            {{--<ul class="dropdown-menu" role="menu">--}}
+                                {{--<li>--}}
+                                    {{--{{auth()->user()->name}}--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--{{auth()->user()->email}}--}}
+                                {{--</li>--}}
+                                {{----}}
+                                {{--<li class="divider"></li>--}}
+
+                                <li>
+                                    @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
+                                        <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
+                                            <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
+                                        </a>
+                                    @else
+                                        <a href="#"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        >
+                                            <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
+                                        </a>
+                                        <form id="logout-form"
+                                              action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}"
+                                              method="POST" style="display: none;">
+                                            @if(config('adminlte.logout_method'))
+                                                {{ method_field(config('adminlte.logout_method')) }}
+                                            @endif
+                                            {{ csrf_field() }}
+                                        </form>
                                     @endif
-                                    {{ csrf_field() }}
-                                </form>
-                            @endif
-                        </li>
-                    </ul>
-                </div>
+                                </li>
+                            </ul>
+                        </div>
+                    {{--</ul>--}}
+                {{--</div>--}}
+            </nav>
                 @if(config('adminlte.layout') == 'top-nav')
                 </div>
                 @endif
@@ -102,7 +123,7 @@
         @endif
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="height: 200%">
             @if(config('adminlte.layout') == 'top-nav')
             <div class="container">
             @endif
@@ -135,3 +156,5 @@
     @stack('js')
     @yield('js')
 @stop
+
+

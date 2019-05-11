@@ -29,6 +29,12 @@ Route::get('categories','API\CategoryController@index');
 
 Route::get('districts','API\DistrictController@index');
 
+Route::group(['prefix'=>'comment'],function (){
+    Route::get('/','API\CommentController@index');
+    Route::post('/{id}','API\CommentController@store');
+    Route::put('/{id}','API\CommentController@update');
+    Route::delete('/{id}','API\CommentController@destroy');
+});
 
 
 

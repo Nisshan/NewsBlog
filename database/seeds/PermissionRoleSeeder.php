@@ -53,6 +53,11 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(["name"=>'edit role']);
         Permission::create(["name"=>'view role']);
 
+        Permission::create(["name"=>'create event']);
+        Permission::create(["name"=>'edit event']);
+        Permission::create(["name"=>'view event']);
+        Permission::create(["name"=>'delete event']);
+
 
         $role = Role::create(["name"=>'Super Admin']);
         $role->givePermissionTo(Permission::all());

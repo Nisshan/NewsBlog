@@ -18,16 +18,15 @@ class CategoryController extends Controller
      */
     public function getCategory()
     {
-        return Datatables::of(Category::query())->addColumn('action', function ($category) {
+        return Datatables::of(Category::orderBy("position", "ASC")->get())->addColumn('action', function ($category) {
             return '
-
                <div class="btn-group">
-                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="caret"></span></button>
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><label>Action</label><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a type="button" href="'.route('categories.show',[$category->id]).'" >View</a></li>
-                    <li><a href="'.route('categories.edit',[$category->id]).'">Edit</a></li>
+                    <li><a type="button" href="' . route('categories.show', [$category->id]) . '" >View</a></li>
+                    <li><a href="' . route('categories.edit', [$category->id]) . '">Edit</a></li>
                     <li class="divider"></li>
-                    <li><a class="delete" href="'.route('categories.destroy', [$category->id]).'">Delete</a></li>
+                    <li><a class="delete" href="' . route('categories.destroy', [$category->id]) . '">Delete</a></li>
                 </ul>
              </div>
             ';
@@ -38,8 +37,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $data['categories'] = Category::all();
-        return view('admin.categories.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['categories'] = Category::orderBy('position','ASC')->get();
+            return view('admin.categories.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -223,4 +227,23 @@ class CategoryController extends Controller
 
 
     }
+    //this is for changing position from ajax request into the table
+    public function updateOrder(Request $request)
+    {
+        $categories = Category::all();
+
+        foreach ($categories as $category) {
+            $category->timestamps = false; // To disable update_at field update
+            $id = $category->id;
+
+            foreach ($request->position as $pos) {
+                if ($pos['id'] == $id) {
+                    $category->update(['position' => $pos['order']]);
+                }
+            }
+        }
+
+        return response('Update Successfully.', 200);
+    }
+
 }

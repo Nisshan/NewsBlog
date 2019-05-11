@@ -35,8 +35,14 @@ class UserController extends Controller
 
     public function index()
     {
-        $data['users'] = User::all();
-        return view('admin.users.index')->with($data);
+        $user = auth()->user()->getAllPermissions()->count();
+        if ($user > 0) {
+            $data['users'] = User::all();
+            return view('admin.users.index')->with($data);
+        } else {
+            return redirect()->route('home');
+        }
+
     }
 
     /**

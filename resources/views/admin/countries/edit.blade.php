@@ -5,6 +5,8 @@
     <script>
         $(document).ready(function () {
             $('#summernote').summernote();
+            $('#keywords').tagator();
+
         });
     </script>
 @stop
@@ -24,18 +26,19 @@
                             @method('PATCH')
 
                             <div class="form-group">
-                                <label for="country_title">{{__('lang.Country_Name')}}</label>
+                                <label for="title">{{__('lang.Country_Name')}}</label>
                                 <input type="text" class="form-control" required="required"
                                        placeholder="Enter country name.." id="title" name="name"
                                        value="{{$country->name}}">
+
                             </div>
                             <div class="form-group">
-                                <label for="country_description"> {{__('lang.Description')}}</label>
+                                <label for="summernote"> {{__('lang.Description')}}</label>
                                 <textarea id="summernote" placeholder="Description..." class="form-control"
                                           name="description">{{ $country->description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="meta_description">{{__('lang.Meta_Description')}}</label>
+                                <label for="metades">{{__('lang.Meta_Description')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter meta_description"
                                        id="metades" name="meta_description"
                                        value="{{ $country->meta_description}}">

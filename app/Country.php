@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
 {
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 
     public function states(){
