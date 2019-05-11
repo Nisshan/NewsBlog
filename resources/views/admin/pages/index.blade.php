@@ -1,18 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Galleries')
-
-@section('content_header')
-
-@stop
+@section('title', 'Pages')
 
 @section('content')
-    
+    @include('flash::message')
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Posts</h1>
+                    <h1 class="box-title">{{__('pages')}}</h1>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -21,16 +18,14 @@
                             <tr>
                                 <th>{{__('lang.ID')}}</th>
                                 <th>{{__('lang.Name')}}</th>
-                                <th>{{__('lang.cover')}}</th>
                                 <th>{{__('lang.Action')}}</th>
-                            </tr>
 
+                            </tr>
                             </thead>
                             <tbody>
-                            
+
                             </tbody>
                         </table>
-                        
                     </div>
                 </div>
             </div>
@@ -43,19 +38,14 @@
             $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('dataset/getGallery') }}',
+                ajax: '{{ url('dataset/getPages') }}',
                 columns: [
                     { data: 'id', name: 'ID' },
-                    { data: 'title', name: 'Title' },
-                    {
-                        data: 'cover', "render": function (data) {
-                            return '<img src="' + data + '" class="img img-responsive img-circle " />';
-                        }, orderable: false, searchable: false
-                    },
-
+                    { data: 'name', name: 'Name ' },
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
+            // Delete country
             $('#table').on('click', '.delete', function (e) {
                 e.preventDefault();
                 $.ajaxSetup({
@@ -69,16 +59,14 @@
                     $.ajax({
                         url: url,
                         type: 'DELETE',
-                        dataType: 'json',
+                        dataType: false,
                         data: {'_method': 'DELETE', 'submit': true}
                     }).always(function (data) {
-                        // window.location.reload();
-                        window.console.log();
+                        window.location.reload();
                     });
                 }else
                     alert("You have cancelled!");
             });
-
         });
     </script>
 @stop

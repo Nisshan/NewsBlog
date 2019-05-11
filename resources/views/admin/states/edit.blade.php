@@ -29,13 +29,9 @@
 
                             <div class="form-group">
                                 <label for="title">{{__('lang.Country_Name')}}</label>
-                                <select name="country_id" id="title" class="form-control myselect" >
-                                    <option selected >{{$state->country->name}}</option>
-                                    @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" required="required"
+                                        id="title" name="country_id" readonly="readonly"
+                                       value="{{$state->country->name}}" >
                             </div>
 
                             <div class="form-group">

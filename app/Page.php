@@ -16,4 +16,7 @@ class Page extends Model
     public function category(){
         return $this->belongsToMany(Category::class,'category_page');
     }
+    public function photo(){
+        return $this->hasMany(PageImage::class,'page_id');
+    }
 }

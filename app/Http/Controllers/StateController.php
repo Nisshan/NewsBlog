@@ -139,7 +139,7 @@ class StateController extends Controller
     {
         if (auth()->user()->hasPermissionTo('edit state')) {
             $data['country'] = Country::find($id);
-            $data['countries'] = Country::all();
+//            $data['countries'] = Country::all();
             $data['state'] = State::find($id);
             return view('admin.states.edit')->with($data);
         } else {
@@ -168,7 +168,7 @@ class StateController extends Controller
 //        $state->slug = $request->slug;
         $state->keywords = trim(($request->keywords));
         $state->meta_description = str_limit(trim($request->meta_description, 200));
-        $state->country_id = $request->country_id;
+//        $state->country_id = $request->country_id;
         $state->save();
         flash('State Name Edited Successfully')->success();
         return redirect()->action("StateController@index");

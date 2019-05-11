@@ -35,6 +35,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => 'auth' ], function(){
     Route::resource('permissions','PermissionController',['only' => ['index', 'show']]);
     Route::resource('users','UserController',['except'=> ['destroy']]);
     Route::resource('events','EventController');
+    Route::resource('pages','PageController');
 
 });
 //ajax controller
@@ -80,6 +81,7 @@ Route::group(['middleware' => 'auth','prefix' => 'dataset'], function () {
     Route::get('getRoles', 'RoleController@getRoles');
     Route::get('getUsers', 'UserController@getUsers');
     Route::get('getEvents','EventController@getEvents');
+    Route::get('getPages', 'PageController@getPages');
 
 });
 

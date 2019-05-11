@@ -20,7 +20,7 @@
                                 <label for="name">{{__('lang.Category')}}</label>
                                 <input type="text" class="form-control" placeholder="Enter name of Title..." name="name" id="title" value="{{old('name')}}">
                             </div>
-                            <div>
+                            <div class="form-group">
                                 <label for="name">{{__('lang.Sub-Category')}}</label>
                                 <select id="country" name="parent_id" class="form-control" style="width:350px">
                                     <option value="0">Select</option>

@@ -16,7 +16,7 @@ class CreatePageImagesTable extends Migration
         Schema::create('page_images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('page_id');
-            $table->string('feature_photo');
+            $table->string('url');
             $table->timestamps();
         });
     }
